@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Terra — Gestión agrícola con visor geográfico | ITACyL</title>
+    <title>Terra —ó Gestión agrícola con visor geográfico | ITACyL</title>
     <meta
       name="description"
       content="Terra es una aplicación de gestión agrícola con visor geográfico. Parcelas SIGPAC, cultivos, actuaciones, tratamientos, imágenes multiespectrales y gestión de riego SIAR. Software libre (GPL-3.0) desarrollado en ITACyL."
@@ -17,14 +17,14 @@
 
     <header class="site-header" id="site-header">
       <div class="container nav">
-        <a class="brand" href="#top" aria-label="Terra — inicio">
+        <a class="brand" href="#top" aria-label="Terra —ó inicio">
           <img src="assets/terra-logo.svg" alt="Terra" width="120" height="32" />
         </a>
         <nav class="nav-links" id="nav-links" aria-label="Principal">
           <a href="#funcionalidades">Funcionalidades</a>
           <a href="#como-funciona">Cómo funciona</a>
           <a href="#capturas">Capturas</a>
-          <a href="#tecnologia">Tecnología</a>
+          <a href="docs/">Docs</a>
           <a href="#descarga">Descarga</a>
           <a href="#contacto">Contacto</a>
         </nav>
@@ -184,7 +184,7 @@
               <!-- Escala -->
               <g transform="translate(20,370)" font-family="Inter, sans-serif" font-size="10" fill="#0f3a2e">
                 <rect width="120" height="6" fill="#0f3a2e" />
-                <text y="22">0 — 250 m</text>
+                <text y="22">0 —ó 250 m</text>
               </g>
             </svg>
           </div>
@@ -355,7 +355,7 @@
               </div>
               <h3>Roles con permisos</h3>
               <p>
-                Tres perfiles — Administración, Trabajador y Visitante — con
+                Tres perfiles —ó Administración, Trabajador y Visitante —ó con
                 permisos granulares sobre cada módulo.
               </p>
             </article>
@@ -408,7 +408,7 @@
             <p class="kicker">Capturas</p>
             <h2>El visor, en una sola pantalla</h2>
             <p class="section-lead">
-              Ilustraciones de referencia — pronto sustituidas por capturas
+              Ilustraciones de referencia —ó pronto sustituidas por capturas
               reales de la aplicación.
             </p>
           </header>
@@ -487,74 +487,6 @@
         </div>
       </section>
 
-      <section class="section" id="tecnologia">
-        <div class="container">
-          <header class="section-head">
-            <p class="kicker">Tecnología</p>
-            <h2>Una pila libre, lista para desplegar</h2>
-            <p class="section-lead">
-              Terra es software libre (GPL-3.0). Funciona como SPA en el
-              navegador, con backend FastAPI y opcionalmente como aplicación
-              de escritorio con Electron.
-            </p>
-          </header>
-
-          <div class="grid stack">
-            <div class="stack-col">
-              <h3>Frontend</h3>
-              <ul>
-                <li>React 19 + TypeScript</li>
-                <li>Vite 8 + Tailwind 4</li>
-                <li>Zustand (estado + persistencia localStorage)</li>
-                <li>OpenLayers 10 + proj4</li>
-              </ul>
-            </div>
-            <div class="stack-col">
-              <h3>Backend</h3>
-              <ul>
-                <li>Python 3.12</li>
-                <li>FastAPI + Uvicorn</li>
-                <li>Pydantic</li>
-                <li>rasterio · pyogrio · shapely</li>
-              </ul>
-            </div>
-            <div class="stack-col">
-              <h3>Distribución</h3>
-              <ul>
-                <li>Electron (escritorio, diálogo nativo y protocolo raster://)</li>
-                <li>electron-builder (instalador NSIS)</li>
-                <li>PyInstaller (backend empaquetado)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section cta-section" id="descarga">
-        <div class="container cta-inner">
-          <div>
-            <p class="kicker">Descarga</p>
-            <h2>Lleva Terra a tu explotación</h2>
-            <p class="section-lead">
-              Instala el instalador para Windows o clona el repositorio y
-              arranca en local con <code>npm run dev</code>. La API REST está
-              disponible en <code>/api/docs</code>.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary btn-lg" href="#">Descargar Terra-Setup.exe</a>
-              <a class="btn btn-ghost btn-lg" href="#">Ver en GitHub</a>
-            </div>
-          </div>
-          <div class="cta-card" aria-hidden="true">
-            <p class="cta-card-label">Requisitos</p>
-            <ul>
-              <li>Node.js &ge; 20</li>
-              <li>Python &ge; 3.12</li>
-              <li>Windows, macOS o Linux</li>
-            </ul>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer" id="contacto">

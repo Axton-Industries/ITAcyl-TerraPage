@@ -1,0 +1,103 @@
+site_name: Terra — Documentación
+site_description: Referencia técnica de Terra, aplicación de gestión agrícola con visor geográfico.
+site_url: https://axton-industries.github.io/ITAcyl-TerraPage/docs/
+site_author: ITACyL
+
+repo_name: Axton-Industries/ITAcyl-TerraPage
+repo_url: https://github.com/Axton-Industries/ITAcyl-TerraPage
+edit_uri: ""
+
+docs_dir: .
+site_dir: ../site
+
+theme:
+  name: material
+  language: es
+  font:
+    text: Inter
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Axton-Industries/ITAcyl-TerraPage
+      name: Terra en GitHub
+  homepage: https://axton-industries.github.io/ITAcyl-TerraPage/
+
+extra_css:
+  - assets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.keys
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
+
+nav:
+  - Inicio: index.md
+  - Inicio rápido: inicio-rapido.md
+  - Pila técnica: pila-tecnica.md
+  - Módulos: modulos.md
+  - Roles y permisos: roles.md
+  - Formatos vectoriales: formatos.md
+  - API REST: api.md
+  - Variables de entorno: env.md
+  - Almacenamiento y SIGPAC: almacenamiento.md
+  - Despliegue: despliegue.md

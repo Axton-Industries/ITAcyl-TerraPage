@@ -1,0 +1,60 @@
+name: Deploy landing + docs to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install MkDocs Material
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-docs.txt
+
+      - name: Build docs site
+        run: mkdocs build -f docs/mkdocs.yml --strict
+
+      - name: Compose Pages artifact
+        run: |
+          mkdir -p _pages/docs
+          # Landing at /
+          cp index.html _pages/index.html
+          cp styles.css _pages/styles.css
+          cp main.js _pages/main.js
+          cp -r assets _pages/assets
+          # Docs site at /docs/
+          cp -r site/. _pages/docs/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

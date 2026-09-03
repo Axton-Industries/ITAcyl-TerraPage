@@ -1,0 +1,48 @@
+/* Terra brand palette for MkDocs Material */
+:root {
+  --md-primary-fg-color: #0f3a2e;
+  --md-primary-fg-color--light: #1a4d3d;
+  --md-primary-fg-color--dark: #0c2620;
+  --md-accent-fg-color: #3d6b3a;
+  --md-accent-fg-color--transparent: rgba(61, 107, 58, 0.1);
+  --md-accent-bg-color: #fff;
+  --md-accent-bg-color--light: rgba(255, 255, 255, 0.7);
+}
+
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: #1a4d3d;
+  --md-default-fg-color--light: #46584f;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #1a4d3d;
+  --md-typeset-a-color: #9bbf6a;
+}
+
+.md-header {
+  box-shadow: 0 1px 0 rgba(15, 58, 46, 0.08);
+}
+
+.md-nav__link--active {
+  color: #0f3a2e;
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) th {
+  background: #eef4ee;
+  color: #0f3a2e;
+}
+
+.md-typeset code {
+  background: #f5f2e9;
+  color: #0f3a2e;
+}
+
+.md-typeset pre > code {
+  background: #0c2620;
+  color: #e8efe8;
+}
+
+.md-typeset .admonition {
+  border-radius: 8px;
+}

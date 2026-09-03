@@ -1,0 +1,5 @@
+# Dependencias para compilar la documentación MkDocs Material.
+# Solo necesarias para editar docs/, no para servir la landing.
+mkdocs>=1.6
+mkdocs-material>=9.5
+pymdown-extensions>=10.7
