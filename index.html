@@ -6,7 +6,7 @@
     <title>Terra — Gestión agrícola con visor geográfico | ITACyL</title>
     <meta
       name="description"
-      content="Terra es una aplicación de gestión agrícola con visor geográfico. Cultivos, actuaciones, tratamientos, imágenes multiespectrales y SIGPAC en una sola herramienta libre."
+      content="Terra es una aplicación de gestión agrícola con visor geográfico. Parcelas SIGPAC, cultivos, actuaciones, tratamientos, imágenes multiespectrales y gestión de riego SIAR. Software libre (GPL-3.0) desarrollado en ITACyL."
     />
     <meta name="theme-color" content="#0f3a2e" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -70,16 +70,16 @@
             </div>
             <ul class="hero-stats" role="list">
               <li>
-                <strong>React + FastAPI</strong>
-                <span>Frontend web y backend Python</span>
+                <strong>React 19 + FastAPI</strong>
+                <span>SPA en navegador, escritorio opcional</span>
               </li>
               <li>
                 <strong>OpenLayers + SIGPAC</strong>
-                <span>WMS oficial de Castilla y León</span>
+                <span>WMS oficial y OGC API Features</span>
               </li>
               <li>
                 <strong>GeoTIFF multiespectral</strong>
-                <span>Carga, recorte y exportación</span>
+                <span>Carga, selección de banda y recorte</span>
               </li>
             </ul>
           </div>
@@ -130,34 +130,36 @@
                 <polygon points="270,260 410,310 380,380 250,330" />
               </g>
 
-              <!-- Capa NDVI sobre el recinto principal -->
+              <!-- GeoTIFF multiespectral sobre el recinto principal -->
               <polygon
                 points="240,160 360,140 390,230 270,260 240,210"
                 fill="url(#ndvi)"
-                fill-opacity=".75"
+                fill-opacity=".55"
                 stroke="#0f3a2e"
                 stroke-width="1.5"
               />
 
               <!-- Etiquetas -->
               <g font-family="Inter, sans-serif" font-size="11" fill="#0f3a2e">
-                <text x="120" y="135">Recinto 14-027-001</text>
-                <text x="265" y="200">NDVI · imagen dron</text>
+                <text x="120" y="135">Recinto SIGPAC</text>
+                <text x="250" y="200">GeoTIFF multiespectral</text>
               </g>
 
               <!-- Controles del visor -->
               <g transform="translate(20,30)">
-                <rect width="150" height="92" rx="10" fill="#ffffff" stroke="#0f3a2e" stroke-opacity=".15" />
+                <rect width="150" height="112" rx="10" fill="#ffffff" stroke="#0f3a2e" stroke-opacity=".15" />
                 <text x="14" y="24" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0f3a2e">
-                  Capas
+                  Capas base
                 </text>
                 <g font-family="Inter, sans-serif" font-size="11" fill="#1a4d3d">
-                  <circle cx="22" cy="44" r="5" fill="#0f3a2e" />
-                  <text x="34" y="48">SIGPAC (WMS)</text>
-                  <circle cx="22" cy="64" r="5" fill="#3d6b3a" />
-                  <text x="34" y="68">NDVI multiespectral</text>
-                  <circle cx="22" cy="84" r="5" fill="#c2622c" />
-                  <text x="34" y="88">Zonificación VRA</text>
+                  <circle cx="22" cy="46" r="4" fill="#0f3a2e" />
+                  <text x="32" y="50">OSM / Esri / PNOA</text>
+                  <circle cx="22" cy="66" r="4" fill="#3d6b3a" />
+                  <text x="32" y="70">PNOA Histórico</text>
+                  <circle cx="22" cy="86" r="4" fill="#9bbf6a" />
+                  <text x="32" y="90">Sentinel-2 cloudless</text>
+                  <circle cx="22" cy="106" r="4" fill="#c2622c" />
+                  <text x="32" y="110">Recintos SIGPAC</text>
                 </g>
               </g>
 
@@ -165,7 +167,7 @@
               <g transform="translate(380,30)">
                 <rect width="160" height="56" rx="10" fill="#ffffff" stroke="#0f3a2e" stroke-opacity=".15" />
                 <text x="14" y="22" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0f3a2e">
-                  Banda
+                  Banda espectral
                 </text>
                 <g font-family="Inter, sans-serif" font-size="11" fill="#1a4d3d">
                   <rect x="14" y="32" width="22" height="14" rx="3" fill="#0f3a2e" />
@@ -175,7 +177,7 @@
                   <rect x="66" y="32" width="22" height="14" rx="3" fill="#9bbf6a" />
                   <text x="77" y="43" fill="#ffffff" text-anchor="middle">G</text>
                   <rect x="92" y="32" width="22" height="14" rx="3" fill="#c2622c" />
-                  <text x="103" y="43" fill="#ffffff" text-anchor="middle">NDVI</text>
+                  <text x="103" y="43" fill="#ffffff" text-anchor="middle">RE</text>
                 </g>
               </g>
 
@@ -195,9 +197,9 @@
             <p class="kicker">Funcionalidades</p>
             <h2>Una sola herramienta, todas las campañas</h2>
             <p class="section-lead">
-              Diseñada para técnicos y productores que necesitan registrar lo
-              que pasa en cada parcela y contrastarlo con la imagen que llega
-              del dron o del satélite.
+              Para técnicos y productores que necesitan registrar lo que pasa
+              en cada parcela y contrastarlo con la imagen que llega del dron
+              o del satélite.
             </p>
           </header>
 
@@ -216,8 +218,9 @@
               </div>
               <h3>Visor geográfico</h3>
               <p>
-                OpenLayers con mapas base (calles, Esri World Imagery, PNOA) y
-                capa oficial SIGPAC servida por WMS.
+                OpenLayers con mapas base (OSM, Esri World Imagery, PNOA MA,
+                PNOA Histórico, Sentinel-2 cloudless, Wayback y Fototeca IGN)
+                y capa oficial SIGPAC servida por WMS.
               </p>
             </article>
             <article class="feature">
@@ -235,8 +238,9 @@
               <h3>Fichas de cultivo</h3>
               <p>
                 Nombre, variedad, campaña, siembra, estado, observaciones y
-                adjuntos. Parcela dibujada o importada de GeoPackage, GeoJSON
-                o Shapefile.
+                adjuntos. Parcela dibujada sobre el mapa (con emparejado
+                automático contra SIGPAC) o importada de GeoPackage, GeoJSON,
+                Shapefile, KML o CSV.
               </p>
             </article>
             <article class="feature">
@@ -277,26 +281,9 @@
               </div>
               <h3>Imágenes multiespectrales</h3>
               <p>
-                Carga de GeoTIFF, selección de banda y visualización
-                georreferenciada sobre el mapa base.
-              </p>
-            </article>
-            <article class="feature">
-              <div class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                  <path
-                    d="M4 6l8-3 8 3-8 3zM4 12l8 3 8-3M4 18l8 3 8-3"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <h3>Zonificación VRA</h3>
-              <p>
-                Estadísticas y umbrales automáticos para generar mapas de
-                aplicación a tasa variable y exportarlos a Shapefile.
+                Carga de GeoTIFF por subida HTTP o desde el diálogo nativo de
+                Electron. Selección de banda espectral (NIR, R, G, RE, azul,
+                LWIR) y visualización georreferenciada sobre el mapa.
               </p>
             </article>
             <article class="feature">
@@ -314,7 +301,62 @@
               <h3>Recorte por parcelas</h3>
               <p>
                 Recorta el ráster cargado a la unión de las parcelas
-                seleccionadas para aligerar el procesado.
+                seleccionadas (SIGPAC, dibujadas o importadas).
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M5 12h14M12 5v14M7 7l-2 5 2 5M17 7l2 5-2 5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Gestión de riego</h3>
+              <p>
+                Cálculo de ETc con datos SIAR (ET0 y lluvia efectiva) sobre
+                las estaciones de cada provincia, con mapa de necesidades
+                hídricas sobre las parcelas.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M12 2c-3.9 0-7 3.1-7 7 0 5 7 13 7 13s7-8 7-13c0-3.9-3.1-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                </svg>
+              </div>
+              <h3>Puntos de interés en el mapa</h3>
+              <p>
+                Marcar focos de plaga, postes, cierros rotos, zanjas y
+                pedregales, o tipos definidos por el usuario, con conexiones
+                entre puntos y fotos adjuntas.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3 0-9 1.6-9 5v3h18v-3c0-3.4-6-5-9-5z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                </svg>
+              </div>
+              <h3>Roles con permisos</h3>
+              <p>
+                Tres perfiles — Administración, Trabajador y Visitante — con
+                permisos granulares sobre cada módulo.
               </p>
             </article>
           </div>
@@ -333,24 +375,27 @@
               <span class="step-num">01</span>
               <h3>Dibuja o importa tus parcelas</h3>
               <p>
-                Dibuja sobre SIGPAC, sube un GeoPackage/GeoJSON/Shapefile o
-                deja que Terra empareje tu dibujo con los recintos oficiales.
+                Dibuja sobre SIGPAC o sube un GeoPackage, GeoJSON, Shapefile,
+                KML o CSV. Terra empareja automáticamente el dibujo con el
+                recinto oficial cuando coincide.
               </p>
             </li>
             <li class="step">
               <span class="step-num">02</span>
               <h3>Carga la imagen del vuelo</h3>
               <p>
-                Sube un GeoTIFF multiespectral desde el navegador o desde el
-                diálogo nativo de Electron. Elige banda y recorta por parcela.
+                Sube un GeoTIFF multiespectral desde el navegador o ábrelo
+                desde el diálogo nativo de Electron. Elige banda (NIR, R, G,
+                RE, azul o LWIR) y recorta el ráster a las parcelas.
               </p>
             </li>
             <li class="step">
               <span class="step-num">03</span>
-              <h3>Registra y exporta</h3>
+              <h3>Registra, adjunta y comparte</h3>
               <p>
-                Anota la actuación o tratamiento, adjunta fotos y exporta la
-                zonificación VRA en Shapefile listo para tu maquinaria.
+                Anota la actuación o tratamiento, adjunta fotos y documentos,
+                y revisa las necesidades de riego con datos SIAR sobre cada
+                parcela.
               </p>
             </li>
           </ol>
@@ -378,6 +423,9 @@
                   <polygon points="430,210 520,190 530,270 410,290 430,240" />
                   <polygon points="140,180 290,240 270,300 110,280 60,150" />
                 </g>
+                <g stroke="#0f3a2e" stroke-opacity=".5" stroke-dasharray="3 3" fill="none">
+                  <polygon points="100,90 200,70 240,150 130,180 100,140" />
+                </g>
                 <text
                   x="160"
                   y="110"
@@ -388,13 +436,13 @@
                   Recintos SIGPAC · WMS oficial
                 </text>
               </svg>
-              <figcaption>Recintos SIGPAC sobre mapa base</figcaption>
+              <figcaption>Recintos SIGPAC sobre mapa base, con parcela dibujada emparejada</figcaption>
             </figure>
             <figure class="shot">
               <svg viewBox="0 0 560 360" role="img" aria-label="Imagen multiespectral">
                 <rect width="560" height="360" rx="14" fill="#0f3a2e" />
                 <defs>
-                  <linearGradient id="ndvi2" x1="0" y1="0" x2="1" y2="1">
+                  <linearGradient id="raster" x1="0" y1="0" x2="1" y2="1">
                     <stop offset="0" stop-color="#3d6b3a" />
                     <stop offset=".5" stop-color="#9bbf6a" />
                     <stop offset="1" stop-color="#c2622c" />
@@ -402,41 +450,38 @@
                 </defs>
                 <polygon
                   points="80,60 480,40 500,300 60,320"
-                  fill="url(#ndvi2)"
+                  fill="url(#raster)"
                 />
                 <g font-family="Inter, sans-serif" font-size="12" fill="#ffffff">
-                  <text x="20" y="28">Banda NDVI — raster recortado</text>
+                  <text x="20" y="28">GeoTIFF multiespectral · banda NIR</text>
                 </g>
               </svg>
-              <figcaption>GeoTIFF multiespectral con selector de banda</figcaption>
+              <figcaption>Visor de bandas sobre el ráster recortado a las parcelas</figcaption>
             </figure>
             <figure class="shot">
-              <svg viewBox="0 0 560 360" role="img" aria-label="Zonificación VRA">
+              <svg viewBox="0 0 560 360" role="img" aria-label="Gestión de riego SIAR">
                 <rect width="560" height="360" rx="14" fill="#f5f2e9" />
-                <g stroke="#0f3a2e" stroke-width="1.4">
-                  <polygon
-                    points="80,80 240,70 260,160 200,200 110,180"
-                    fill="#c2622c"
-                    fill-opacity=".75"
-                  />
-                  <polygon
-                    points="260,160 410,150 430,230 290,250 260,200"
-                    fill="#e8d36a"
-                    fill-opacity=".85"
-                  />
-                  <polygon
-                    points="410,150 510,140 520,220 430,230"
-                    fill="#3d6b3a"
-                    fill-opacity=".7"
-                  />
+                <g stroke="#0f3a2e" stroke-width="1.2">
+                  <polygon points="60,60 220,40 260,140 140,180 60,150" fill="#9bbf6a" fill-opacity=".75" />
+                  <polygon points="260,140 400,120 430,210 290,240 260,190" fill="#e8d36a" fill-opacity=".85" />
+                  <polygon points="430,210 520,190 530,270 410,290 430,240" fill="#c2622c" fill-opacity=".7" />
                 </g>
                 <g font-family="Inter, sans-serif" font-size="11" fill="#0f3a2e">
-                  <text x="120" y="130">Zona alta</text>
-                  <text x="305" y="200">Zona media</text>
-                  <text x="430" y="185">Zona baja</text>
+                  <text x="110" y="130">ETc 3 mm/d</text>
+                  <text x="295" y="195">ETc 5 mm/d</text>
+                  <text x="440" y="245">ETc 7 mm/d</text>
                 </g>
+                <text
+                  x="20"
+                  y="338"
+                  font-family="Inter, sans-serif"
+                  font-size="11"
+                  fill="#46584f"
+                >
+                  SIAR · ET0 y lluvia efectiva por estación
+                </text>
               </svg>
-              <figcaption>Zonificación VRA lista para exportar a Shapefile</figcaption>
+              <figcaption>Mapa de necesidades hídricas con datos SIAR</figcaption>
             </figure>
           </div>
         </div>
@@ -459,10 +504,9 @@
               <h3>Frontend</h3>
               <ul>
                 <li>React 19 + TypeScript</li>
-                <li>Vite</li>
-                <li>Tailwind CSS</li>
-                <li>Zustand (estado + persistencia)</li>
-                <li>OpenLayers + proj4</li>
+                <li>Vite 8 + Tailwind 4</li>
+                <li>Zustand (estado + persistencia localStorage)</li>
+                <li>OpenLayers 10 + proj4</li>
               </ul>
             </div>
             <div class="stack-col">
@@ -471,15 +515,15 @@
                 <li>Python 3.12</li>
                 <li>FastAPI + Uvicorn</li>
                 <li>Pydantic</li>
-                <li>rasterio (ráster)</li>
+                <li>rasterio · pyogrio · shapely</li>
               </ul>
             </div>
             <div class="stack-col">
               <h3>Distribución</h3>
               <ul>
-                <li>Electron (escritorio)</li>
-                <li>electron-builder (NSIS)</li>
-                <li>PyInstaller (backend)</li>
+                <li>Electron (escritorio, diálogo nativo y protocolo raster://)</li>
+                <li>electron-builder (instalador NSIS)</li>
+                <li>PyInstaller (backend empaquetado)</li>
               </ul>
             </div>
           </div>
