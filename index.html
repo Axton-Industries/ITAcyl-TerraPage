@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terra — Gestión agrícola con visor geográfico | ITACyL</title>
+    <meta
+      name="description"
+      content="Terra es una aplicación de gestión agrícola con visor geográfico. Cultivos, actuaciones, tratamientos, imágenes multiespectrales y SIGPAC en una sola herramienta libre."
+    />
+    <meta name="theme-color" content="#0f3a2e" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" id="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Terra — inicio">
+          <img src="assets/terra-logo.svg" alt="Terra" width="120" height="32" />
+        </a>
+        <nav class="nav-links" id="nav-links" aria-label="Principal">
+          <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#capturas">Capturas</a>
+          <a href="#tecnologia">Tecnología</a>
+          <a href="#descarga">Descarga</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-ghost" href="https://github.com/" rel="noopener">GitHub</a>
+          <a class="btn btn-primary" href="#descarga">Descargar</a>
+        </div>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav-links"
+          aria-label="Abrir menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              v2.0.0-beta.1 · GPL-3.0 · ITACyL
+            </p>
+            <h1>
+              Gestión agrícola de precisión
+              <span class="hero-accent">con visor geográfico</span>
+            </h1>
+            <p class="lead">
+              Terra centraliza el día a día de la explotación: parcelas SIGPAC,
+              cultivos, registro de actuaciones y tratamientos, e imágenes
+              multiespectrales georreferenciadas sobre un mismo visor.
+              Software libre, instalable en escritorio o servidor local.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="#descarga">Descargar Terra</a>
+              <a class="btn btn-ghost btn-lg" href="#funcionalidades"
+                >Ver funcionalidades</a
+              >
+            </div>
+            <ul class="hero-stats" role="list">
+              <li>
+                <strong>React + FastAPI</strong>
+                <span>Frontend web y backend Python</span>
+              </li>
+              <li>
+                <strong>OpenLayers + SIGPAC</strong>
+                <span>WMS oficial de Castilla y León</span>
+              </li>
+              <li>
+                <strong>GeoTIFF multiespectral</strong>
+                <span>Carga, recorte y exportación</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <!-- Inline SVG: parcela SIGPAC sobre mapa con imagen multiespectral superpuesta -->
+            <svg viewBox="0 0 560 420" role="img" aria-label="Visor geográfico Terra">
+              <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#eef4ee" />
+                  <stop offset="1" stop-color="#dbe7df" />
+                </linearGradient>
+                <linearGradient id="ndvi" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#3d6b3a" />
+                  <stop offset=".45" stop-color="#9bbf6a" />
+                  <stop offset=".75" stop-color="#e8d36a" />
+                  <stop offset="1" stop-color="#c2622c" />
+                </linearGradient>
+                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M20 0H0v20" fill="none" stroke="#0f3a2e" stroke-opacity=".08" />
+                </pattern>
+              </defs>
+
+              <rect width="560" height="420" rx="18" fill="url(#bg)" />
+              <rect width="560" height="420" rx="18" fill="url(#grid)" />
+
+              <!-- Carretera -->
+              <path
+                d="M-20 320 Q140 290 300 300 T580 280"
+                stroke="#f1ead0"
+                stroke-width="14"
+                fill="none"
+              />
+              <path
+                d="M-20 320 Q140 290 300 300 T580 280"
+                stroke="#d8c98a"
+                stroke-width="1.5"
+                fill="none"
+                stroke-dasharray="6 8"
+              />
+
+              <!-- Recintos SIGPAC (polígonos irregulares) -->
+              <g stroke="#0f3a2e" stroke-width="1.5" fill="#ffffff" fill-opacity=".55">
+                <polygon points="60,90 200,70 240,160 130,200 60,170" />
+                <polygon points="240,160 360,140 390,230 270,260 240,210" />
+                <polygon points="390,230 510,210 530,290 410,310 390,260" />
+                <polygon points="130,200 270,260 250,330 90,300 60,170" />
+                <polygon points="270,260 410,310 380,380 250,330" />
+              </g>
+
+              <!-- Capa NDVI sobre el recinto principal -->
+              <polygon
+                points="240,160 360,140 390,230 270,260 240,210"
+                fill="url(#ndvi)"
+                fill-opacity=".75"
+                stroke="#0f3a2e"
+                stroke-width="1.5"
+              />
+
+              <!-- Etiquetas -->
+              <g font-family="Inter, sans-serif" font-size="11" fill="#0f3a2e">
+                <text x="120" y="135">Recinto 14-027-001</text>
+                <text x="265" y="200">NDVI · imagen dron</text>
+              </g>
+
+              <!-- Controles del visor -->
+              <g transform="translate(20,30)">
+                <rect width="150" height="92" rx="10" fill="#ffffff" stroke="#0f3a2e" stroke-opacity=".15" />
+                <text x="14" y="24" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0f3a2e">
+                  Capas
+                </text>
+                <g font-family="Inter, sans-serif" font-size="11" fill="#1a4d3d">
+                  <circle cx="22" cy="44" r="5" fill="#0f3a2e" />
+                  <text x="34" y="48">SIGPAC (WMS)</text>
+                  <circle cx="22" cy="64" r="5" fill="#3d6b3a" />
+                  <text x="34" y="68">NDVI multiespectral</text>
+                  <circle cx="22" cy="84" r="5" fill="#c2622c" />
+                  <text x="34" y="88">Zonificación VRA</text>
+                </g>
+              </g>
+
+              <!-- Banda selector -->
+              <g transform="translate(380,30)">
+                <rect width="160" height="56" rx="10" fill="#ffffff" stroke="#0f3a2e" stroke-opacity=".15" />
+                <text x="14" y="22" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0f3a2e">
+                  Banda
+                </text>
+                <g font-family="Inter, sans-serif" font-size="11" fill="#1a4d3d">
+                  <rect x="14" y="32" width="22" height="14" rx="3" fill="#0f3a2e" />
+                  <text x="25" y="43" fill="#ffffff" text-anchor="middle">NIR</text>
+                  <rect x="40" y="32" width="22" height="14" rx="3" fill="#3d6b3a" />
+                  <text x="51" y="43" fill="#ffffff" text-anchor="middle">R</text>
+                  <rect x="66" y="32" width="22" height="14" rx="3" fill="#9bbf6a" />
+                  <text x="77" y="43" fill="#ffffff" text-anchor="middle">G</text>
+                  <rect x="92" y="32" width="22" height="14" rx="3" fill="#c2622c" />
+                  <text x="103" y="43" fill="#ffffff" text-anchor="middle">NDVI</text>
+                </g>
+              </g>
+
+              <!-- Escala -->
+              <g transform="translate(20,370)" font-family="Inter, sans-serif" font-size="10" fill="#0f3a2e">
+                <rect width="120" height="6" fill="#0f3a2e" />
+                <text y="22">0 — 250 m</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="funcionalidades">
+        <div class="container">
+          <header class="section-head">
+            <p class="kicker">Funcionalidades</p>
+            <h2>Una sola herramienta, todas las campañas</h2>
+            <p class="section-lead">
+              Diseñada para técnicos y productores que necesitan registrar lo
+              que pasa en cada parcela y contrastarlo con la imagen que llega
+              del dron o del satélite.
+            </p>
+          </header>
+
+          <div class="grid features">
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6zm6 0v14m6-12v14"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Visor geográfico</h3>
+              <p>
+                OpenLayers con mapas base (calles, Esri World Imagery, PNOA) y
+                capa oficial SIGPAC servida por WMS.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M4 4h16v4H4zM4 10h10v4H4zM4 16h16v4H4z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Fichas de cultivo</h3>
+              <p>
+                Nombre, variedad, campaña, siembra, estado, observaciones y
+                adjuntos. Parcela dibujada o importada de GeoPackage, GeoJSON
+                o Shapefile.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M4 4h16v16H4zM8 4v16M4 12h16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                </svg>
+              </div>
+              <h3>Actuaciones y tratamientos</h3>
+              <p>
+                Registro de tareas agrícolas y productos fitosanitarios o
+                fertilizantes, con adjuntos (fotos y documentos).
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                  <path
+                    d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                </svg>
+              </div>
+              <h3>Imágenes multiespectrales</h3>
+              <p>
+                Carga de GeoTIFF, selección de banda y visualización
+                georreferenciada sobre el mapa base.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M4 6l8-3 8 3-8 3zM4 12l8 3 8-3M4 18l8 3 8-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Zonificación VRA</h3>
+              <p>
+                Estadísticas y umbrales automáticos para generar mapas de
+                aplicación a tasa variable y exportarlos a Shapefile.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    d="M12 2l9 5v10l-9 5-9-5V7zM12 12l9-5M12 12v10M12 12L3 7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Recorte por parcelas</h3>
+              <p>
+                Recorta el ráster cargado a la unión de las parcelas
+                seleccionadas para aligerar el procesado.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="como-funciona">
+        <div class="container">
+          <header class="section-head">
+            <p class="kicker">Cómo funciona</p>
+            <h2>Tres pasos para pasar del campo al mapa</h2>
+          </header>
+
+          <ol class="steps">
+            <li class="step">
+              <span class="step-num">01</span>
+              <h3>Dibuja o importa tus parcelas</h3>
+              <p>
+                Dibuja sobre SIGPAC, sube un GeoPackage/GeoJSON/Shapefile o
+                deja que Terra empareje tu dibujo con los recintos oficiales.
+              </p>
+            </li>
+            <li class="step">
+              <span class="step-num">02</span>
+              <h3>Carga la imagen del vuelo</h3>
+              <p>
+                Sube un GeoTIFF multiespectral desde el navegador o desde el
+                diálogo nativo de Electron. Elige banda y recorta por parcela.
+              </p>
+            </li>
+            <li class="step">
+              <span class="step-num">03</span>
+              <h3>Registra y exporta</h3>
+              <p>
+                Anota la actuación o tratamiento, adjunta fotos y exporta la
+                zonificación VRA en Shapefile listo para tu maquinaria.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="capturas">
+        <div class="container">
+          <header class="section-head">
+            <p class="kicker">Capturas</p>
+            <h2>El visor, en una sola pantalla</h2>
+            <p class="section-lead">
+              Ilustraciones de referencia — pronto sustituidas por capturas
+              reales de la aplicación.
+            </p>
+          </header>
+
+          <div class="grid shots">
+            <figure class="shot">
+              <svg viewBox="0 0 560 360" role="img" aria-label="Visor SIGPAC">
+                <rect width="560" height="360" rx="14" fill="#eef4ee" />
+                <g stroke="#0f3a2e" stroke-opacity=".15" fill="#ffffff">
+                  <polygon points="60,60 220,40 260,140 140,180 60,150" />
+                  <polygon points="260,140 400,120 430,210 290,240 260,190" />
+                  <polygon points="430,210 520,190 530,270 410,290 430,240" />
+                  <polygon points="140,180 290,240 270,300 110,280 60,150" />
+                </g>
+                <text
+                  x="160"
+                  y="110"
+                  font-family="Inter, sans-serif"
+                  font-size="12"
+                  fill="#0f3a2e"
+                >
+                  Recintos SIGPAC · WMS oficial
+                </text>
+              </svg>
+              <figcaption>Recintos SIGPAC sobre mapa base</figcaption>
+            </figure>
+            <figure class="shot">
+              <svg viewBox="0 0 560 360" role="img" aria-label="Imagen multiespectral">
+                <rect width="560" height="360" rx="14" fill="#0f3a2e" />
+                <defs>
+                  <linearGradient id="ndvi2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#3d6b3a" />
+                    <stop offset=".5" stop-color="#9bbf6a" />
+                    <stop offset="1" stop-color="#c2622c" />
+                  </linearGradient>
+                </defs>
+                <polygon
+                  points="80,60 480,40 500,300 60,320"
+                  fill="url(#ndvi2)"
+                />
+                <g font-family="Inter, sans-serif" font-size="12" fill="#ffffff">
+                  <text x="20" y="28">Banda NDVI — raster recortado</text>
+                </g>
+              </svg>
+              <figcaption>GeoTIFF multiespectral con selector de banda</figcaption>
+            </figure>
+            <figure class="shot">
+              <svg viewBox="0 0 560 360" role="img" aria-label="Zonificación VRA">
+                <rect width="560" height="360" rx="14" fill="#f5f2e9" />
+                <g stroke="#0f3a2e" stroke-width="1.4">
+                  <polygon
+                    points="80,80 240,70 260,160 200,200 110,180"
+                    fill="#c2622c"
+                    fill-opacity=".75"
+                  />
+                  <polygon
+                    points="260,160 410,150 430,230 290,250 260,200"
+                    fill="#e8d36a"
+                    fill-opacity=".85"
+                  />
+                  <polygon
+                    points="410,150 510,140 520,220 430,230"
+                    fill="#3d6b3a"
+                    fill-opacity=".7"
+                  />
+                </g>
+                <g font-family="Inter, sans-serif" font-size="11" fill="#0f3a2e">
+                  <text x="120" y="130">Zona alta</text>
+                  <text x="305" y="200">Zona media</text>
+                  <text x="430" y="185">Zona baja</text>
+                </g>
+              </svg>
+              <figcaption>Zonificación VRA lista para exportar a Shapefile</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tecnologia">
+        <div class="container">
+          <header class="section-head">
+            <p class="kicker">Tecnología</p>
+            <h2>Una pila libre, lista para desplegar</h2>
+            <p class="section-lead">
+              Terra es software libre (GPL-3.0). Funciona como SPA en el
+              navegador, con backend FastAPI y opcionalmente como aplicación
+              de escritorio con Electron.
+            </p>
+          </header>
+
+          <div class="grid stack">
+            <div class="stack-col">
+              <h3>Frontend</h3>
+              <ul>
+                <li>React 19 + TypeScript</li>
+                <li>Vite</li>
+                <li>Tailwind CSS</li>
+                <li>Zustand (estado + persistencia)</li>
+                <li>OpenLayers + proj4</li>
+              </ul>
+            </div>
+            <div class="stack-col">
+              <h3>Backend</h3>
+              <ul>
+                <li>Python 3.12</li>
+                <li>FastAPI + Uvicorn</li>
+                <li>Pydantic</li>
+                <li>rasterio (ráster)</li>
+              </ul>
+            </div>
+            <div class="stack-col">
+              <h3>Distribución</h3>
+              <ul>
+                <li>Electron (escritorio)</li>
+                <li>electron-builder (NSIS)</li>
+                <li>PyInstaller (backend)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section" id="descarga">
+        <div class="container cta-inner">
+          <div>
+            <p class="kicker">Descarga</p>
+            <h2>Lleva Terra a tu explotación</h2>
+            <p class="section-lead">
+              Instala el instalador para Windows o clona el repositorio y
+              arranca en local con <code>npm run dev</code>. La API REST está
+              disponible en <code>/api/docs</code>.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="#">Descargar Terra-Setup.exe</a>
+              <a class="btn btn-ghost btn-lg" href="#">Ver en GitHub</a>
+            </div>
+          </div>
+          <div class="cta-card" aria-hidden="true">
+            <p class="cta-card-label">Requisitos</p>
+            <ul>
+              <li>Node.js &ge; 20</li>
+              <li>Python &ge; 3.12</li>
+              <li>Windows, macOS o Linux</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacto">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/terra-logo.svg" alt="Terra" width="120" height="32" />
+          <p>
+            Software libre para la gestión agrícola con visor geográfico.
+            Proyecto desarrollado en el Instituto Tecnológico Agrario de
+            Castilla y León (ITACyL).
+          </p>
+          <a class="footer-itacyl" href="https://www.itacyl.es/" rel="noopener">
+            <img src="assets/itacyl.svg" alt="ITACyL" width="140" height="40" />
+          </a>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Proyecto</h4>
+            <ul>
+              <li><a href="#funcionalidades">Funcionalidades</a></li>
+              <li><a href="#como-funciona">Cómo funciona</a></li>
+              <li><a href="#tecnologia">Tecnología</a></li>
+              <li><a href="#descarga">Descarga</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Recursos</h4>
+            <ul>
+              <li><a href="#">Documentación</a></li>
+              <li><a href="#">API REST</a></li>
+              <li><a href="#">Cambios</a></li>
+              <li><a href="#">Licencia GPL-3.0</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contacto</h4>
+            <ul>
+              <li>ITACyL · Instituto Tecnológico Agrario</li>
+              <li>Junta de Castilla y León</li>
+              <li><a href="mailto:info@itacyl.es">info@itacyl.es</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-base">
+        <p>&copy; <span id="year">2026</span> ITACyL. Publicado bajo GPL-3.0.</p>
+      </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>
