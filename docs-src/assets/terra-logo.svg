@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64">
+  <g fill="#87BF5B" transform="translate(10 10) scale(0.5)">
+    <circle cx="32" cy="21" r="13"/>
+    <circle cx="20" cy="30" r="8.5"/>
+    <circle cx="44" cy="30" r="8.5"/>
+    <path d="M28 33 h8 v9 a4 4 0 0 1 -4 4 a4 4 0 0 1 -4 -4 z"/>
+  </g>
+  <text x="54" y="40" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="28" font-weight="700" fill="#1f2a18">Terra</text>
+</svg>

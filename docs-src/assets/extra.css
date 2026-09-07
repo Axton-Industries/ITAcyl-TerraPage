@@ -1,0 +1,1037 @@
+/* ================================================================
+   Terra Docs — WebODM Starlight-inspired theme
+   Targets MkDocs Material 9.x
+   ================================================================ */
+
+/* ---------- Brand tokens (Terra green, WebODM layout) ---------- */
+:root {
+  /* Primary palette (Terra green, "Sharp Green" = green-hue 156° analogue) */
+  --md-primary-fg-color:           #0f3a2e;
+  --md-primary-fg-color--light:    #1a5c47;
+  --md-primary-fg-color--dark:     #0a2a1f;
+  --md-accent-fg-color:            #2dd4a4;
+  --md-accent-fg-color--transparent: rgba(45, 212, 164, 0.12);
+  --md-accent-bg-color:            #ecfdf5;
+  --md-typeset-a-color:            #0d8567;
+  --md-typeset-code-color:         #0d8567;
+  --md-code-bg-color:              #ecfdf5;
+
+  /* Spacing & shape (WebODM/Sharp values) */
+  --sl-radius-sm: 0.25rem;
+  --sl-radius-md: 0.5rem;
+  --sl-radius-lg: 0.75rem;
+  --sl-shadow-sm: 0 1px 1px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+  --sl-shadow-md: 0 4px 6px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+  --sl-shadow-lg: 0 12px 24px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+  --sl-line-height:    1.75;
+  --sl-line-height-h:  1.25;
+  --sl-content-width:  45rem;
+  --sl-sidebar-width:  15rem;
+  --sl-toc-width:      13rem;
+  --sl-content-gap-y:  1rem;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:           #0a1f14;
+  --md-primary-fg-color--light:    #16a073;
+  --md-primary-fg-color--dark:     #0a1f14;
+  --md-accent-fg-color:            #2dd4a4;
+  --md-accent-fg-color--transparent: rgba(45, 212, 164, 0.15);
+  --md-accent-bg-color:            #14352a;
+  --md-typeset-a-color:            #2dd4a4;
+  --md-typeset-code-color:         #5eead4;
+  --md-code-bg-color:              #0d2818;
+
+  --sl-shadow-sm: 0 1px 1px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+  --sl-shadow-md: 0 4px 6px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+  --sl-shadow-lg: 0 12px 24px rgba(0,0,0,0.5), 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* ================================================================
+   Global — WebODM density: 16px body, 1.75 line-height, 1rem gap
+   ================================================================ */
+body {
+  font-size: 1rem;
+  line-height: var(--sl-line-height);
+}
+
+.md-grid {
+  max-width: 76rem;
+}
+
+.md-typeset {
+  font-size: 0.875rem;
+  line-height: var(--sl-line-height);
+}
+
+.md-typeset a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--md-accent-fg-color--transparent);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.md-typeset a:hover {
+  border-bottom-color: var(--md-accent-fg-color);
+}
+
+/* ================================================================
+   Header — clean, taller, no harsh shadow
+   ================================================================ */
+.md-header {
+  background: var(--md-primary-fg-color);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  height: 4rem;
+  padding: 0 1.5rem;
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background: #0a1f14;
+}
+
+.md-header__inner {
+  height: 4rem;
+}
+
+.md-header__title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: 0.95rem;
+  color: #fff;
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.md-header__ellipsis {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Stack the two topic blocks. Material animates them on scroll, but on
+   first render both render in the same row, overlapping. We size the
+   container and offset the topics so they sit one above the other. */
+.md-header__topic {
+  display: block;
+  font-size: 0.95rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+.md-header__topic[data-md-component="header-topic"] {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.md-header__button.md-logo {
+  padding: 0;
+  margin-right: 0.5rem;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.6rem;
+  width: auto;
+  /* The landing logo is dark text on transparent. Invert for the dark header. */
+  filter: brightness(0) invert(1);
+}
+
+/* Header social icons */
+.md-header__source {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.md-header__source a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.md-header__source a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* "← Inicio" pill in the docs header — links back to the landing site */
+.terra-home-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-left: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999rem;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.terra-home-pill:hover {
+  color: #fff;
+  background: rgba(45, 212, 164, 0.18);
+  border-color: var(--md-accent-fg-color);
+}
+
+.terra-home-pill svg {
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 60em) {
+  .terra-home-pill span {
+    display: none;
+  }
+  .terra-home-pill {
+    padding: 0.3rem 0.45rem;
+    margin-left: 0.4rem;
+  }
+}
+
+/* Search */
+.md-search__form {
+  border-radius: 999rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.md-search__form:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.md-search__input + .md-search__icon {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-md-color-scheme="slate"] .md-search__form {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ================================================================
+   Sidebar
+   ================================================================ */
+.md-sidebar {
+  width: var(--sl-sidebar-width);
+  padding: 1.25rem 0.75rem;
+}
+
+/* Hide the "Terra — Documentación" text label inside the left sidebar.
+   The logo is still visible; the text is redundant with the header. */
+.md-nav--primary .md-nav__title {
+  font-size: 0;
+}
+
+.md-nav--primary .md-nav__title > a,
+.md-nav--primary .md-nav__title > img {
+  font-size: initial;
+}
+
+[data-md-toggle="set"] {
+  background: var(--md-accent-fg-color--transparent);
+}
+
+.md-nav--primary .md-nav__title {
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__title {
+  color: var(--md-default-fg-color);
+  background: #0a1f14;
+}
+
+.md-nav__link {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--sl-radius-sm);
+  margin: 0;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.md-nav__link:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+}
+
+.md-nav__link--active,
+.md-nav__link--active:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+  font-weight: 600;
+}
+
+/* "Inicio" — the first top-level item in the sidebar. Style as a
+   prominent home link, separated from the section groups below.
+   Target only the <a>, not the <label> (which is a mobile toggle). */
+.md-nav--primary > .md-nav__list > .md-nav__item:first-child {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest, rgba(0,0,0,0.08));
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item:first-child {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Hide the duplicate <label> on desktop — only the <a> is the link */
+@media screen and (min-width: 60em) {
+  .md-nav--primary > .md-nav__list > .md-nav__item:first-child > label.md-nav__link {
+    display: none;
+  }
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:first-child > a.md-nav__link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--md-accent-fg-color);
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:first-child > a.md-nav__link::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  margin-top: -0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--md-accent-fg-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:first-child > a.md-nav__link:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+}
+
+/* Sidebar section dropdowns — clickable, with chevron */
+.md-nav--primary > .md-nav__list > .md-nav__item--section {
+  margin-top: 0.25rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item--section > label,
+.md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--md-default-fg-color--light);
+  padding: 0.45rem 0.75rem;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-radius: var(--sl-radius-sm);
+  transition: background 0.12s ease, color 0.12s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item--section > label:hover,
+.md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item--section:first-child > label,
+.md-nav--primary > .md-nav__list > .md-nav__item--section:first-child > .md-nav__link {
+  margin-top: 0;
+}
+
+/* Chevron icon — Material fills it with an SVG via JS */
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+  margin-left: auto;
+  transition: transform 0.15s ease;
+}
+
+/* When the section is open, rotate the chevron 90° (down) */
+.md-nav--primary > .md-nav__list > .md-nav__item--section input:checked ~ .md-nav__title .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-nav[aria-expanded="true"] .md-nav__title .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section[aria-expanded="true"] .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section input:checked + label .md-nav__icon {
+  transform: rotate(90deg);
+}
+
+/* Children list — hidden by default, shown when expanded */
+.md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 0.75rem;
+  margin-top: 0;
+  border-left: 1px solid var(--md-default-fg-color--lightest, rgba(0,0,0,0.08));
+  transition: max-height 0.2s ease, margin-top 0.2s ease;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav {
+  border-left-color: rgba(255, 255, 255, 0.08);
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item--section input:checked ~ .md-nav,
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-nav[aria-expanded="true"] {
+  max-height: 100rem;
+  margin-top: 0.15rem;
+}
+
+/* ================================================================
+   Content — WebODM density: tight rhythm, no h2 borders
+   ================================================================ */
+.md-typeset h1 {
+  font-weight: 800;
+  font-size: 1.85rem;
+  line-height: var(--sl-line-height-h);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0;
+  border: none;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: var(--sl-line-height-h);
+  letter-spacing: -0.01em;
+  margin: 1.75rem 0 0.5rem;
+  padding-bottom: 0;
+  border: none;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: var(--sl-line-height-h);
+  margin: 1.25rem 0 0.25rem;
+}
+
+.md-typeset h4 {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 1rem 0 0.2rem;
+}
+
+/* The big one: tight paragraph rhythm like WebODM */
+.md-typeset p {
+  margin: 0 0 var(--sl-content-gap-y);
+}
+
+.md-typeset ul,
+.md-typeset ol {
+  margin: 0 0 var(--sl-content-gap-y);
+  padding-left: 1.5em;
+}
+
+.md-typeset ul li,
+.md-typeset ol li {
+  margin: 0 0 0.25rem;  /* 4px between items, WebODM-like */
+}
+
+.md-typeset ul li:last-child,
+.md-typeset ol li:last-child {
+  margin-bottom: 1.25rem;  /* 20px below the last item, like WebODM */
+}
+
+.md-typeset ul li p:last-child,
+.md-typeset ol li p:last-child {
+  margin-bottom: 0;
+}
+
+.md-typeset hr {
+  border: none;
+  height: 1px;
+  background: var(--md-default-fg-color--lightest, rgba(0,0,0,0.08));
+  margin: 1.75rem 0;
+}
+
+[data-md-color-scheme="slate"] .md-typeset hr {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ================================================================
+   Inline code & code blocks — WebODM: tight, no shadow
+   ================================================================ */
+.md-typeset code {
+  background: var(--md-code-bg-color);
+  color: var(--md-typeset-code-color);
+  border-radius: var(--sl-radius-sm);
+  padding: 0.125em 0.375em;
+  font-size: 0.8125em;
+  font-weight: 500;
+}
+
+[data-md-color-scheme="slate"] .md-typeset code {
+  background: var(--md-code-bg-color);
+  color: var(--md-typeset-code-color);
+}
+
+.md-typeset pre {
+  border-radius: var(--sl-radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 0.75em 1em;
+  margin: 0.75rem 0 1rem;
+  line-height: 1.5;
+}
+
+.md-typeset pre > code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: inherit;
+  font-weight: 400;
+}
+
+/* ================================================================
+   Tables — WebODM: thin rows, 0.5rem 1rem padding
+   ================================================================ */
+.md-typeset table:not([class]) {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  border-radius: var(--sl-radius-md);
+  overflow: hidden;
+  box-shadow: var(--sl-shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: table;
+  width: 100%;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-accent-bg-color);
+  color: var(--md-primary-fg-color);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: #14352a;
+  color: #bbf7d0;
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.md-typeset table:not([class]) td {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  vertical-align: top;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+.md-typeset table:not([class]) tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background: var(--md-accent-fg-color--transparent);
+}
+
+/* ================================================================
+   Admonitions — WebODM: clean, no overlap
+   ================================================================ */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--sl-radius-md);
+  border-width: 1px;
+  border-left-width: 4px;
+  margin: 1rem 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  border-radius: 0;
+  padding: 0.5rem 1rem 0.5rem 2.4rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  margin: 0;
+  position: relative;
+  display: block;
+  text-indent: 0;
+}
+
+.md-typeset .admonition > :not(.admonition-title),
+.md-typeset details > :not(summary) {
+  padding: 0.6rem 1rem 0.3rem;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.md-typeset .admonition > :not(.admonition-title):last-child,
+.md-typeset details > :not(summary):last-child {
+  padding-bottom: 0.85rem;
+}
+
+/* ================================================================
+   Tabs
+   ================================================================ */
+.md-typeset .tabbed-labels {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .tabbed-labels {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.md-typeset .tabbed-labels > label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.md-typeset .tabbed-labels > label:hover {
+  color: var(--md-accent-fg-color);
+}
+
+.md-typeset .tabbed-labels > label.tabbed-set--active {
+  color: var(--md-accent-fg-color);
+  border-bottom-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .tabbed-block {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: none;
+  border-radius: 0 0 var(--sl-radius-md) var(--sl-radius-md);
+  padding: 1em 1.2em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .tabbed-block {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ================================================================
+   Buttons (mkdocs-material's .md-button)
+   ================================================================ */
+.md-typeset .md-button {
+  border-radius: 999rem;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+  margin: 0.5rem 0.4rem 0.5rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.md-typeset .md-button--primary {
+  background: var(--md-accent-fg-color);
+  color: #0a2a1f;
+  box-shadow: 0 2px 6px rgba(45, 212, 164, 0.25);
+}
+
+.md-typeset .md-button--primary:hover {
+  box-shadow: 0 4px 12px rgba(45, 212, 164, 0.35);
+  transform: translateY(-1px);
+}
+
+.md-typeset .md-button:not(.md-button--primary) {
+  background: transparent;
+  color: var(--md-default-fg-color);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary) {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.md-typeset .md-button:not(.md-button--primary):hover {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+}
+
+/* ================================================================
+   On-this-page (TOC) — WebODM: small title, minimal links
+   ================================================================ */
+.md-sidebar--secondary {
+  padding: 1.5rem 0.75rem;
+}
+
+.md-sidebar--secondary .md-nav {
+  font-size: 0.8rem;
+}
+
+.md-sidebar--secondary .md-nav__title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--md-default-fg-color--light);
+  padding: 0 0.5rem 0.5rem;
+  background: transparent;
+  box-shadow: none;
+  cursor: default;
+  display: block;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  font-size: 0.78rem;
+  padding: 0.25rem 0.5rem;
+  line-height: 1.4;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-sidebar--secondary .md-nav__link--active,
+.md-sidebar--secondary .md-nav__link:hover {
+  color: var(--md-accent-fg-color);
+  background: transparent;
+  font-weight: 500;
+}
+
+/* ================================================================
+   Footer — minimal: just a thin bottom strip with social links
+   ================================================================ */
+.md-footer {
+  background: var(--md-primary-fg-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 0;
+}
+
+[data-md-color-scheme="slate"] .md-footer {
+  background: #071a0f;
+}
+
+.md-footer-meta {
+  padding: 0;
+  font-size: 0.75rem;
+}
+
+.md-footer-meta__inner {
+  padding: 0.25rem 0;
+  min-height: 0;
+}
+
+/* Hide the prev/next nav (we removed it from features but keep this as a safety net) */
+.md-footer__inner:not(.md-footer-meta__inner) {
+  display: none !important;
+}
+
+.md-footer__link,
+.md-footer__link--prev,
+.md-footer__link--next {
+  display: none !important;
+}
+
+.md-social__link {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.15s ease;
+}
+
+.md-social__link:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* ================================================================
+   Landing page — feature cards (WebODM sl-link-card style)
+   ================================================================ */
+.terra-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.terra-feature-card {
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--sl-radius-md);
+  padding: 0.7rem 0.9rem;
+  background: var(--md-default-bg-color, #fff);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  box-shadow: var(--sl-shadow-sm);
+  text-decoration: none;
+  color: inherit;
+}
+
+.terra-feature-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--sl-shadow-md);
+  border-color: var(--md-accent-fg-color);
+}
+
+[data-md-color-scheme="slate"] .terra-feature-card {
+  background: #112a1f;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-md-color-scheme="slate"] .terra-feature-card:hover {
+  background: #14352a;
+  border-color: var(--md-accent-fg-color);
+}
+
+.terra-feature-card h3 {
+  margin: 0 0 0.25em 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+  position: relative;
+  padding-left: 0.9em;
+  line-height: 1.3;
+}
+
+[data-md-color-scheme="slate"] .terra-feature-card h3 {
+  color: var(--md-accent-fg-color);
+}
+
+.terra-feature-card h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.35em;
+  height: 0.35em;
+  background: var(--md-accent-fg-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.terra-feature-card p {
+  margin: 0 0 0.35em 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--md-default-fg-color);
+  opacity: 0.85;
+}
+
+.terra-feature-card p:last-child {
+  margin-bottom: 0;
+}
+
+.terra-feature-card a {
+  color: var(--md-accent-fg-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: none;
+}
+
+.terra-feature-card a:hover {
+  text-decoration: underline;
+}
+
+/* ================================================================
+   Steps — WebODM sl-steps
+   ================================================================ */
+.terra-steps {
+  counter-reset: step;
+  list-style: none;
+  padding-left: 0;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.terra-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 0.85rem 2.25rem;
+  margin: 0;
+  min-height: 1.75rem;
+}
+
+.terra-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--md-accent-fg-color);
+  color: #0a2a1f;
+  border-radius: 999rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  box-shadow: 0 0 0 4px var(--md-default-bg-color, #fff);
+  z-index: 1;
+}
+
+[data-md-color-scheme="slate"] .terra-steps li::before {
+  background: var(--md-accent-fg-color);
+  color: #0a2a1f;
+  box-shadow: 0 0 0 4px #112a1f;
+}
+
+.terra-steps li::after {
+  content: "";
+  position: absolute;
+  left: 0.72rem;
+  top: 1.5rem;
+  bottom: 0;
+  width: 1px;
+  background: var(--md-default-fg-color--lightest, rgba(0,0,0,0.12));
+}
+
+[data-md-color-scheme="slate"] .terra-steps li::after {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.terra-steps li:last-child {
+  padding-bottom: 0;
+}
+
+.terra-steps li:last-child::after {
+  display: none;
+}
+
+/* ================================================================
+   Badges (WebODM-style: small inline labels)
+   ================================================================ */
+.terra-badge {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  border-radius: var(--sl-radius-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--md-code-font, monospace);
+  letter-spacing: 0.02em;
+  border: 1px solid;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+.terra-badge--default { background: var(--md-accent-fg-color); color: #0a2a1f; border-color: var(--md-accent-fg-color); }
+.terra-badge--note    { background: rgba(59, 130, 246, 0.12); color: #2563eb; border-color: rgba(59, 130, 246, 0.3); }
+.terra-badge--success { background: rgba(34, 197, 94, 0.12); color: #16a34a; border-color: rgba(34, 197, 94, 0.3); }
+.terra-badge--warning { background: rgba(234, 179, 8, 0.12); color: #ca8a04; border-color: rgba(234, 179, 8, 0.3); }
+.terra-badge--danger  { background: rgba(239, 68, 68, 0.12); color: #dc2626; border-color: rgba(239, 68, 68, 0.3); }
+.terra-badge--tip     { background: rgba(168, 85, 247, 0.12); color: #9333ea; border-color: rgba(168, 85, 247, 0.3); }
+
+[data-md-color-scheme="slate"] .terra-badge--note    { color: #60a5fa; }
+[data-md-color-scheme="slate"] .terra-badge--success { color: #4ade80; }
+[data-md-color-scheme="slate"] .terra-badge--warning { color: #fbbf24; }
+[data-md-color-scheme="slate"] .terra-badge--danger  { color: #f87171; }
+[data-md-color-scheme="slate"] .terra-badge--tip     { color: #c084fc; }
+
+/* ================================================================
+   Callout — WebODM "Did you know?"
+   ================================================================ */
+.terra-callout {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  background: var(--md-accent-fg-color--transparent);
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-left: 3px solid var(--md-accent-fg-color);
+  border-radius: var(--sl-radius-md);
+  padding: 0.5rem 0.85rem;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.terra-callout::before {
+  content: "💡";
+  font-size: 1.05em;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.terra-callout-title {
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+  margin-bottom: 0.1em;
+  display: block;
+}
+
+[data-md-color-scheme="slate"] .terra-callout-title {
+  color: var(--md-accent-fg-color);
+}
+
+/* ================================================================
+   Scrollbar
+   ================================================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ================================================================
+   Selection
+   ================================================================ */
+::selection {
+  background: var(--md-accent-fg-color--transparent);
+  color: inherit;
+}
+
+/* ================================================================
+   Responsive
+   ================================================================ */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    background: var(--md-primary-fg-color);
+    color: white;
+  }
+}
+
+@media screen and (max-width: 60em) {
+  .terra-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}

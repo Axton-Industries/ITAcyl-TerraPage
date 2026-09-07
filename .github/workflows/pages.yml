@@ -32,27 +32,15 @@ jobs:
           pip install -r requirements-docs.txt
 
       - name: Build docs site
-        run: mkdocs build -f docs/mkdocs.yml --strict
-
-      - name: Compose Pages artifact
-        run: |
-          mkdir -p _pages/docs
-          # Landing at /
-          cp index.html _pages/index.html
-          cp styles.css _pages/styles.css
-          cp main.js _pages/main.js
-          cp -r assets _pages/assets
-          # Docs site at /docs/
-          cp -r site/. _pages/docs/
-
-      - name: Disable Jekyll on Pages
-        run: touch _pages/.nojekyll
+        # Build the MkDocs site directly into the repo's docs/ folder so
+        # GitHub Pages serves it at /docs/ without any extra wrapper dir.
+        run: mkdocs build -f docs-src/mkdocs.yml --strict
 
       - name: Commit built site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A _pages/
+          git add -A docs/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
@@ -63,7 +51,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _pages
+          path: .
 
   deploy:
     needs: build
