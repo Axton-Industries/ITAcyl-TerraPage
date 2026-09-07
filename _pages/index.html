@@ -82,109 +82,15 @@
             </ul>
           </div>
 
-          <div class="hero-art" aria-hidden="true">
-            <!-- Inline SVG: parcela SIGPAC sobre mapa con imagen multiespectral superpuesta -->
-            <svg viewBox="0 0 560 420" role="img" aria-label="Visor geográfico Terra">
-              <defs>
-                <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#eef4ee" />
-                  <stop offset="1" stop-color="#dbe7df" />
-                </linearGradient>
-                <linearGradient id="ndvi" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#3d6b3a" />
-                  <stop offset=".45" stop-color="#9bbf6a" />
-                  <stop offset=".75" stop-color="#e8d36a" />
-                  <stop offset="1" stop-color="#c2622c" />
-                </linearGradient>
-                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M20 0H0v20" fill="none" stroke="#0f3a2e" stroke-opacity=".08" />
-                </pattern>
-              </defs>
-
-              <rect width="560" height="420" rx="18" fill="url(#bg)" />
-              <rect width="560" height="420" rx="18" fill="url(#grid)" />
-
-              <!-- Carretera -->
-              <path
-                d="M-20 320 Q140 290 300 300 T580 280"
-                stroke="#f1ead0"
-                stroke-width="14"
-                fill="none"
-              />
-              <path
-                d="M-20 320 Q140 290 300 300 T580 280"
-                stroke="#d8c98a"
-                stroke-width="1.5"
-                fill="none"
-                stroke-dasharray="6 8"
-              />
-
-              <!-- Recintos SIGPAC (polígonos irregulares) -->
-              <g stroke="#0f3a2e" stroke-width="1.5" fill="#ffffff" fill-opacity=".55">
-                <polygon points="60,90 200,70 240,160 130,200 60,170" />
-                <polygon points="240,160 360,140 390,230 270,260 240,210" />
-                <polygon points="390,230 510,210 530,290 410,310 390,260" />
-                <polygon points="130,200 270,260 250,330 90,300 60,170" />
-                <polygon points="270,260 410,310 380,380 250,330" />
-              </g>
-
-              <!-- GeoTIFF multiespectral sobre el recinto principal -->
-              <polygon
-                points="240,160 360,140 390,230 270,260 240,210"
-                fill="url(#ndvi)"
-                fill-opacity=".55"
-                stroke="#0f3a2e"
-                stroke-width="1.5"
-              />
-
-              <!-- Etiquetas -->
-              <g font-family="Inter, sans-serif" font-size="11" fill="#0f3a2e">
-                <text x="120" y="135">Recinto SIGPAC</text>
-                <text x="250" y="200">GeoTIFF multiespectral</text>
-              </g>
-
-              <!-- Controles del visor -->
-              <g transform="translate(20,30)">
-                <rect width="150" height="112" rx="10" fill="#ffffff" stroke="#0f3a2e" stroke-opacity=".15" />
-                <text x="14" y="24" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0f3a2e">
-                  Capas base
-                </text>
-                <g font-family="Inter, sans-serif" font-size="11" fill="#1a4d3d">
-                  <circle cx="22" cy="46" r="4" fill="#0f3a2e" />
-                  <text x="32" y="50">OSM / Esri / PNOA</text>
-                  <circle cx="22" cy="66" r="4" fill="#3d6b3a" />
-                  <text x="32" y="70">PNOA Histórico</text>
-                  <circle cx="22" cy="86" r="4" fill="#9bbf6a" />
-                  <text x="32" y="90">Sentinel-2 cloudless</text>
-                  <circle cx="22" cy="106" r="4" fill="#c2622c" />
-                  <text x="32" y="110">Recintos SIGPAC</text>
-                </g>
-              </g>
-
-              <!-- Banda selector -->
-              <g transform="translate(380,30)">
-                <rect width="160" height="56" rx="10" fill="#ffffff" stroke="#0f3a2e" stroke-opacity=".15" />
-                <text x="14" y="22" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0f3a2e">
-                  Banda espectral
-                </text>
-                <g font-family="Inter, sans-serif" font-size="11" fill="#1a4d3d">
-                  <rect x="14" y="32" width="22" height="14" rx="3" fill="#0f3a2e" />
-                  <text x="25" y="43" fill="#ffffff" text-anchor="middle">NIR</text>
-                  <rect x="40" y="32" width="22" height="14" rx="3" fill="#3d6b3a" />
-                  <text x="51" y="43" fill="#ffffff" text-anchor="middle">R</text>
-                  <rect x="66" y="32" width="22" height="14" rx="3" fill="#9bbf6a" />
-                  <text x="77" y="43" fill="#ffffff" text-anchor="middle">G</text>
-                  <rect x="92" y="32" width="22" height="14" rx="3" fill="#c2622c" />
-                  <text x="103" y="43" fill="#ffffff" text-anchor="middle">RE</text>
-                </g>
-              </g>
-
-              <!-- Escala -->
-              <g transform="translate(20,370)" font-family="Inter, sans-serif" font-size="10" fill="#0f3a2e">
-                <rect width="120" height="6" fill="#0f3a2e" />
-                <text y="22">0 —ó 250 m</text>
-              </g>
-            </svg>
+          <div class="hero-art" aria-hidden="false">
+            <img
+              src="assets/screenshot-mapa.png"
+              alt="Visor geográfico de Terra con recintos SIGPAC"
+              class="hero-shot"
+              width="1200"
+              height="750"
+              loading="eager"
+            />
           </div>
         </div>
       </section>
@@ -413,73 +319,40 @@
 
           <div class="grid shots">
             <figure class="shot">
-              <svg viewBox="0 0 560 360" role="img" aria-label="Visor SIGPAC">
-                <rect width="560" height="360" rx="14" fill="#eef4ee" />
-                <g stroke="#0f3a2e" stroke-opacity=".15" fill="#ffffff">
-                  <polygon points="60,60 220,40 260,140 140,180 60,150" />
-                  <polygon points="260,140 400,120 430,210 290,240 260,190" />
-                  <polygon points="430,210 520,190 530,270 410,290 430,240" />
-                  <polygon points="140,180 290,240 270,300 110,280 60,150" />
-                </g>
-                <g stroke="#0f3a2e" stroke-opacity=".5" stroke-dasharray="3 3" fill="none">
-                  <polygon points="100,90 200,70 240,150 130,180 100,140" />
-                </g>
-                <text
-                  x="160"
-                  y="110"
-                  font-family="Inter, sans-serif"
-                  font-size="12"
-                  fill="#0f3a2e"
-                >
-                  Recintos SIGPAC · WMS oficial
-                </text>
-              </svg>
+              <img src="assets/screenshot-mapa.png" alt="Visor SIGPAC con recintos y parcela dibujada" loading="lazy" />
               <figcaption>Recintos SIGPAC sobre mapa base, con parcela dibujada emparejada</figcaption>
             </figure>
             <figure class="shot">
-              <svg viewBox="0 0 560 360" role="img" aria-label="Imagen multiespectral">
-                <rect width="560" height="360" rx="14" fill="#0f3a2e" />
-                <defs>
-                  <linearGradient id="raster" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#3d6b3a" />
-                    <stop offset=".5" stop-color="#9bbf6a" />
-                    <stop offset="1" stop-color="#c2622c" />
-                  </linearGradient>
-                </defs>
-                <polygon
-                  points="80,60 480,40 500,300 60,320"
-                  fill="url(#raster)"
-                />
-                <g font-family="Inter, sans-serif" font-size="12" fill="#ffffff">
-                  <text x="20" y="28">GeoTIFF multiespectral · banda NIR</text>
-                </g>
-              </svg>
-              <figcaption>Visor de bandas sobre el ráster recortado a las parcelas</figcaption>
+              <img src="assets/screenshot-mapa-dividido.png" alt="Comparación split de GeoTIFF multiespectral" loading="lazy" />
+              <figcaption>Visor en modo comparación: GeoTIFF multiespectral sobre ortofoto</figcaption>
             </figure>
             <figure class="shot">
-              <svg viewBox="0 0 560 360" role="img" aria-label="Gestión de riego SIAR">
-                <rect width="560" height="360" rx="14" fill="#f5f2e9" />
-                <g stroke="#0f3a2e" stroke-width="1.2">
-                  <polygon points="60,60 220,40 260,140 140,180 60,150" fill="#9bbf6a" fill-opacity=".75" />
-                  <polygon points="260,140 400,120 430,210 290,240 260,190" fill="#e8d36a" fill-opacity=".85" />
-                  <polygon points="430,210 520,190 530,270 410,290 430,240" fill="#c2622c" fill-opacity=".7" />
-                </g>
-                <g font-family="Inter, sans-serif" font-size="11" fill="#0f3a2e">
-                  <text x="110" y="130">ETc 3 mm/d</text>
-                  <text x="295" y="195">ETc 5 mm/d</text>
-                  <text x="440" y="245">ETc 7 mm/d</text>
-                </g>
-                <text
-                  x="20"
-                  y="338"
-                  font-family="Inter, sans-serif"
-                  font-size="11"
-                  fill="#46584f"
-                >
-                  SIAR · ET0 y lluvia efectiva por estación
-                </text>
-              </svg>
+              <img src="assets/screenshot-riego.png" alt="Mapa de necesidades hídricas con datos SIAR" loading="lazy" />
               <figcaption>Mapa de necesidades hídricas con datos SIAR</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pantallas">
+        <div class="container">
+          <header class="section-head">
+            <p class="kicker">Pantallas</p>
+            <h2>Una interfaz pensada para el día a día</h2>
+            <p class="section-lead">
+              Login con tres perfiles, calendario con eventos agregados y
+              visor geográfico. Todo conectado por una capa de permisos.
+            </p>
+          </header>
+
+          <div class="grid shots">
+            <figure class="shot shot--small">
+              <img src="assets/screenshot-login.png" alt="Pantalla de acceso con cuentas demo" loading="lazy" />
+              <figcaption>Acceso con cuentas demo (Administración, Trabajador, Visitante)</figcaption>
+            </figure>
+            <figure class="shot shot--small">
+              <img src="assets/calendario.png" alt="Vista mensual del calendario con eventos" loading="lazy" />
+              <figcaption>Calendario mensual con eventos agregados de todos los módulos</figcaption>
             </figure>
           </div>
         </div>

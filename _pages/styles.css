@@ -317,9 +317,13 @@ code {
   color: var(--ink-soft);
 }
 
-.hero-art svg {
+.hero-art svg,
+.hero-art .hero-shot {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ---- Sections ---- */
@@ -440,10 +444,16 @@ code {
   box-shadow: var(--shadow);
 }
 
+.shot img,
 .shot svg {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.shot--small {
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .shot figcaption {
