@@ -7,6 +7,15 @@ hide:
 
 **Gestión agrícola con visor geográfico.** Software libre GPL-3.0, desarrollado en el Instituto Tecnológico Agrario de Castilla y León (ITACyL).
 
+<div class="terra-callout">
+  <div>
+    <span class="terra-callout-title">¿Sabías que…?</span>
+    Terra funciona como aplicación de escritorio con instalador de Windows, o como aplicación web en cualquier navegador. Los datos estructurados viven en tu navegador, así que no necesitas servidor para empezar a trabajar.
+  </div>
+</div>
+
+## Características
+
 <div class="terra-feature-grid">
   <div class="terra-feature-card">
     <h3> Mapa interactivo </h3>
@@ -40,41 +49,39 @@ hide:
 
 Instala Terra y tenlo funcionando en menos de 5 minutos.
 
-1. **Clona el repositorio** y ejecuta el instalador de dependencias
-2. **Lanza en modo desarrollo** con un solo comando
-3. **Abre el navegador** en `localhost:3000`
-
 [:material-rocket-launch: Inicio rápido](inicio-rapido.md){ .md-button .md-button--primary }
 
 [:material-download: Generar instalador](despliegue.md){ .md-button }
 
+[:fontawesome-brands-github: Repositorio](https://github.com/Axton-Industries/ITAcyl-TerraPage){ .md-button }
+
 ---
 
-## Aprende a usar Terra
+## Tutoriales paso a paso
 
 Guías paso a paso para sacar el máximo partido a cada módulo.
 
 <div class="terra-feature-grid">
-  <div class="terra-feature-card">
+  <a class="terra-feature-card" href="tutorials/navegar-mapa.md">
     <h3> Navegar por el mapa </h3>
     <p>Capas base, recintos SIGPAC, carga de GeoTIFF y puntos de interés.</p>
-    <p><a href="tutorials/navegar-mapa.md">Ver tutorial &rarr;</a></p>
-  </div>
-  <div class="terra-feature-card">
+    <p><span>Empezar &rarr;</span></p>
+  </a>
+  <a class="terra-feature-card" href="tutorials/crear-cultivo.md">
     <h3> Crear un cultivo </h3>
     <p>Dibuja parcelas, vincula cultivos y gestiona la información de campo.</p>
-    <p><a href="tutorials/crear-cultivo.md">Ver tutorial &rarr;</a></p>
-  </div>
-  <div class="terra-feature-card">
+    <p><span>Empezar &rarr;</span></p>
+  </a>
+  <a class="terra-feature-card" href="tutorials/crear-actuacion.md">
     <h3> Registrar actuaciones </h3>
     <p>Registra tareas agrícolas, tratamientos y adjunta documentación.</p>
-    <p><a href="tutorials/crear-actuacion.md">Ver tutorial &rarr;</a></p>
-  </div>
-  <div class="terra-feature-card">
+    <p><span>Empezar &rarr;</span></p>
+  </a>
+  <a class="terra-feature-card" href="tutorials/gestion-riego.md">
     <h3> Gestión de riego </h3>
     <p>Calcula las necesidades hídricas con datos agroclimáticos del SIAR.</p>
-    <p><a href="tutorials/gestion-riego.md">Ver tutorial &rarr;</a></p>
-  </div>
+    <p><span>Empezar &rarr;</span></p>
+  </a>
 </div>
 
 ---
@@ -91,4 +98,4 @@ Guías paso a paso para sacar el máximo partido a cada módulo.
 | **Idioma** | Español |
 
 !!! info "Software libre"
-    Terra es software libre. Puedes contribuir en [GitHub](https://github.com/Axton-Industries/ITAcyl-TerraPage).
+    Terra es software libre publicado bajo GPL-3.0. Las contribuciones son bienvenidas en [GitHub](https://github.com/Axton-Industries/ITAcyl-TerraPage).
