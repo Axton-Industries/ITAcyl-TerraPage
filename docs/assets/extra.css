@@ -1,48 +1,318 @@
-/* Terra brand palette for MkDocs Material */
-:root {
-  --md-primary-fg-color: #0f3a2e;
-  --md-primary-fg-color--light: #1a4d3d;
-  --md-primary-fg-color--dark: #0c2620;
-  --md-accent-fg-color: #3d6b3a;
-  --md-accent-fg-color--transparent: rgba(61, 107, 58, 0.1);
-  --md-accent-bg-color: #fff;
-  --md-accent-bg-color--light: rgba(255, 255, 255, 0.7);
-}
+/* ================================================================
+   Terra Docs — WebODM-inspired theme overrides
+   ================================================================ */
 
-[data-md-color-scheme="default"] {
-  --md-typeset-a-color: #1a4d3d;
-  --md-default-fg-color--light: #46584f;
+/* ---------- Brand tokens ---------- */
+:root {
+  --md-primary-fg-color:        #0f3a2e;
+  --md-primary-fg-color--light: #1a5c47;
+  --md-primary-fg-color--dark:  #0a2a1f;
+  --md-accent-fg-color:         #4ade80;
+  --md-accent-fg-color--transparent: rgba(74, 222, 128, 0.10);
+  --md-accent-bg-color:         #f0fdf4;
+  --md-typeset-a-color:         #166534;
+  --md-typeset-code-color:      #1a5c47;
+  --md-code-bg-color:           #f0f7f4;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #1a4d3d;
-  --md-typeset-a-color: #9bbf6a;
+  --md-primary-fg-color:        #166534;
+  --md-primary-fg-color--light: #22c55e;
+  --md-primary-fg-color--dark:  #0f3a2e;
+  --md-accent-fg-color:         #4ade80;
+  --md-accent-fg-color--transparent: rgba(74, 222, 128, 0.12);
+  --md-accent-bg-color:         #14532d;
+  --md-typeset-a-color:         #4ade80;
+  --md-code-bg-color:           #0d2818;
+  --md-code-color:              #bbf7d0;
 }
 
+/* ---------- Header ---------- */
 .md-header {
-  box-shadow: 0 1px 0 rgba(15, 58, 46, 0.08);
+  background: var(--md-primary-fg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background: #0a1f14;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.md-header__topic {
+  font-weight: 700;
+}
+
+/* ---------- Sidebar ---------- */
+.md-nav__link {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  padding: 4px 0;
 }
 
 .md-nav__link--active {
-  color: #0f3a2e;
   font-weight: 600;
 }
 
-.md-typeset table:not([class]) th {
-  background: #eef4ee;
-  color: #0f3a2e;
+.md-nav__item--nested > .md-nav__link {
+  font-weight: 500;
 }
 
+/* Section headers in sidebar */
+.md-nav__item > .md-nav__link > strong,
+.md-nav__item > label > strong {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-accent-fg-color);
+  font-weight: 700;
+}
+
+/* ---------- Content area ---------- */
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  border-bottom: 3px solid var(--md-accent-fg-color);
+  padding-bottom: 0.3em;
+  margin-bottom: 1.2em;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 2em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--md-typeset-color, rgba(0,0,0,0.08));
+}
+
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  margin-top: 1.5em;
+}
+
+/* ---------- Links ---------- */
+.md-typeset a {
+  text-decoration: underline;
+  text-decoration-color: var(--md-accent-fg-color--transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.md-typeset a:hover {
+  text-decoration-color: var(--md-accent-fg-color);
+}
+
+/* ---------- Code blocks ---------- */
 .md-typeset code {
-  background: #f5f2e9;
-  color: #0f3a2e;
+  background: var(--md-code-bg-color);
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+  font-size: 0.85em;
 }
 
 .md-typeset pre > code {
-  background: #0c2620;
-  color: #e8efe8;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 0.82rem;
 }
 
-.md-typeset .admonition {
+.md-typeset pre {
   border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1em 1.2em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset pre {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Tables ---------- */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  font-size: 0.82rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-accent-bg-color, #f0fdf4);
+  color: var(--md-primary-fg-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--md-accent-fg-color--transparent);
+}
+
+/* ---------- Admonitions ---------- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px;
+  border-width: 1px 1px 1px 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  border-radius: 8px 8px 0 0;
+  font-weight: 600;
+}
+
+/* ---------- Tabs ---------- */
+.md-typeset .tabbed-labels > label {
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.md-typeset .tabbed-block {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 1em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .tabbed-block {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- On-this-page (TOC) ---------- */
+.md-sidebar--secondary .md-nav__link {
+  font-size: 0.76rem;
+}
+
+/* ---------- Footer ---------- */
+.md-footer {
+  background: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-footer {
+  background: #071a0f;
+}
+
+.md-footer__link {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.md-footer__link:hover {
+  color: #4ade80;
+}
+
+/* ---------- Search ---------- */
+.md-search__form {
+  border-radius: 8px;
+}
+
+/* ---------- Landing page cards ---------- */
+.terra-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5em 0;
+}
+
+.terra-feature-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1.2em 1.4em;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  background: var(--md-primary-fg-color--light);
+}
+
+.terra-feature-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--md-accent-fg-color);
+}
+
+[data-md-color-scheme="slate"] .terra-feature-card {
+  background: rgba(22, 101, 52, 0.15);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] .terra-feature-card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.terra-feature-card h3 {
+  margin: 0 0 0.4em 0;
+  font-size: 1rem;
+}
+
+.terra-feature-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ---------- Step-by-step tutorials ---------- */
+.terra-steps {
+  counter-reset: step;
+  list-style: none;
+  padding-left: 0;
+}
+
+.terra-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 3em;
+  margin-bottom: 1.5em;
+}
+
+.terra-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2em;
+  height: 2em;
+  background: var(--md-primary-fg-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85em;
+}
+
+[data-md-color-scheme="slate"] .terra-steps li::before {
+  background: var(--md-accent-fg-color);
+  color: var(--md-primary-fg-color);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    background: var(--md-primary-fg-color);
+    color: white;
+  }
 }

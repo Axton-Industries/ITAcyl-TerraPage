@@ -1,5 +1,5 @@
 site_name: Terra — Documentación
-site_description: Referencia técnica de Terra, aplicación de gestión agrícola con visor geográfico.
+site_description: Guía de usuario y referencia técnica de Terra, aplicación de gestión agrícola con visor geográfico.
 site_url: https://axton-industries.github.io/ITAcyl-TerraPage/docs/
 site_author: ITACyL
 
@@ -19,47 +19,64 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: green
-      accent: lime
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Cambiar a modo oscuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
-      accent: lime
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Cambiar a modo claro
   features:
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.expand
+    - navigation.path
     - navigation.indexes
     - navigation.top
     - navigation.footer
+    - navigation.sidebars
     - toc.follow
+    - toc.integrate
     - search.suggest
     - search.highlight
     - search.share
     - content.code.copy
     - content.tabs.link
+    - content.action.edit
+    - content.action.view
+    - announce.dismiss
   icon:
     repo: fontawesome/brands/github
+  logo: assets/terra-logo.svg
+  favicon: assets/terra-favicon.svg
+  extra:
+    social:
+      - icon: fontawesome/brands/github
+        link: https://github.com/Axton-Industries/ITAcyl-TerraPage
+        name: Repositorio en GitHub
 
 extra:
   generator: false
+  homepage: https://axton-industries.github.io/ITAcyl-TerraPage/
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Axton-Industries/ITAcyl-TerraPage
       name: Terra en GitHub
-  homepage: https://axton-industries.github.io/ITAcyl-TerraPage/
 
 extra_css:
   - assets/extra.css
 
 markdown_extensions:
+  - abbr
   - admonition
   - attr_list
   - def_list
@@ -70,6 +87,9 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -90,14 +110,26 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.smartsymbols
 
+plugins:
+  - search
+  - tags
+
 nav:
   - Inicio: index.md
-  - Inicio rápido: inicio-rapido.md
-  - Pila técnica: pila-tecnica.md
-  - Módulos: modulos.md
-  - Roles y permisos: roles.md
-  - Formatos vectoriales: formatos.md
-  - API REST: api.md
-  - Variables de entorno: env.md
-  - Almacenamiento y SIGPAC: almacenamiento.md
-  - Despliegue: despliegue.md
+  - Empezar:
+      - Inicio rápido: inicio-rapido.md
+      - Despliegue: despliegue.md
+  - Tutoriales:
+      - Navegar por el mapa: tutorials/navegar-mapa.md
+      - Crear un cultivo: tutorials/crear-cultivo.md
+      - Registrar actuaciones: tutorials/crear-actuacion.md
+      - Gestión de riego: tutorials/gestion-riego.md
+  - Guía de usuario:
+      - Módulos: modulos.md
+      - Roles y permisos: roles.md
+      - Formatos vectoriales: formatos.md
+  - Referencia técnica:
+      - Pila técnica: pila-tecnica.md
+      - API REST: api.md
+      - Variables de entorno: env.md
+      - Almacenamiento y SIGPAC: almacenamiento.md

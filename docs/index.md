@@ -1,20 +1,94 @@
-# Terra — Documentación
+---
+hide:
+  - navigation
+---
 
-Bienvenido a la documentación técnica de **Terra**, la aplicación de gestión agrícola con visor geográfico desarrollada como proyecto de prácticas en el **Instituto Tecnológico Agrario de Castilla y León (ITACyL)**.
+# Terra
 
-## Qué hay aquí
+**Gestión agrícola con visor geográfico.** Software libre GPL-3.0, desarrollado en el Instituto Tecnológico Agrario de Castilla y León (ITACyL).
 
-| | | |
-|---|---|---|
-| [Inicio rápido](inicio-rapido.md) | [Pila técnica](pila-tecnica.md) | [Módulos](modulos.md) |
-| [Roles y permisos](roles.md) | [Formatos vectoriales](formatos.md) | [API REST](api.md) |
-| [Variables de entorno](env.md) | [Almacenamiento y SIGPAC](almacenamiento.md) | [Despliegue](despliegue.md) |
+<div class="terra-feature-grid">
+  <div class="terra-feature-card">
+    <h3> Mapa interactivo </h3>
+    <p>Visor geográfico con capas SIGPAC, GeoTIFF multiespectral y puntos de interés sobre la parcela.</p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Cultivos </h3>
+    <p>Fichas de cultivo con variedad, campaña, estado y parcelas vinculadas al mapa.</p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Actuaciones y tratamientos </h3>
+    <p>Registro de tareas agrícolas, productos fitosanitarios y fertilizantes con adjuntos.</p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Maquinaria </h3>
+    <p>Inventario de maquinaria con fotos y documentación técnica adjunta.</p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Gestión de riego </h3>
+    <p>Cálculo de ETc con datos del SIAR y mapa de necesidades hídricas sobre parcelas.</p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Multiusuario </h3>
+    <p>Tres roles (Administración, Trabajador, Visitante) con permisos granulares.</p>
+  </div>
+</div>
 
-## Acerca del proyecto
+---
 
-Terra es **software libre** publicado bajo **GPL-3.0**. Funciona como SPA en el navegador, con un backend FastAPI en Python y, opcionalmente, como aplicación de escritorio mediante Electron con instalador NSIS.
+## Empezar rápido
 
-- **Versión actual:** `2.0.0-beta.1`
-- **Licencia:** [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html)
-- **Persistencia:** los datos estructurados viven en `localStorage` del navegador (claves `terra:*`). El servidor solo guarda ficheros binarios (adjuntos y GeoTIFFs) en `backend/data/uploads/`.
-- **Idioma de la UI:** exclusivamente español.
+Instala Terra y tenlo funcionando en menos de 5 minutos.
+
+1. **Clona el repositorio** y ejecuta el instalador de dependencias
+2. **Lanza en modo desarrollo** con un solo comando
+3. **Abre el navegador** en `localhost:3000`
+
+[:material-rocket-launch: Inicio rápido](inicio-rapido.md){ .md-button .md-button--primary }
+
+[:material-download: Generar instalador](despliegue.md){ .md-button }
+
+---
+
+## Aprende a usar Terra
+
+Guías paso a paso para sacar el máximo partido a cada módulo.
+
+<div class="terra-feature-grid">
+  <div class="terra-feature-card">
+    <h3> Navegar por el mapa </h3>
+    <p>Capas base, recintos SIGPAC, carga de GeoTIFF y puntos de interés.</p>
+    <p><a href="tutorials/navegar-mapa.md">Ver tutorial &rarr;</a></p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Crear un cultivo </h3>
+    <p>Dibuja parcelas, vincula cultivos y gestiona la información de campo.</p>
+    <p><a href="tutorials/crear-cultivo.md">Ver tutorial &rarr;</a></p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Registrar actuaciones </h3>
+    <p>Registra tareas agrícolas, tratamientos y adjunta documentación.</p>
+    <p><a href="tutorials/crear-actuacion.md">Ver tutorial &rarr;</a></p>
+  </div>
+  <div class="terra-feature-card">
+    <h3> Gestión de riego </h3>
+    <p>Calcula las necesidades hídricas con datos agroclimáticos del SIAR.</p>
+    <p><a href="tutorials/gestion-riego.md">Ver tutorial &rarr;</a></p>
+  </div>
+</div>
+
+---
+
+## Información del proyecto
+
+| | |
+|---|---|
+| **Versión actual** | `2.0.0-beta.1` |
+| **Licencia** | [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html) |
+| **Frontend** | React 19 + TypeScript + Vite 8 + Tailwind 4 |
+| **Backend** | Python 3.12 + FastAPI |
+| **Persistencia** | `localStorage` del navegador (datos) + backend (ficheros) |
+| **Idioma** | Español |
+
+!!! info "Software libre"
+    Terra es software libre. Puedes contribuir en [GitHub](https://github.com/Axton-Industries/ITAcyl-TerraPage).

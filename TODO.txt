@@ -1,0 +1,10 @@
+HACER:
+- Enlazarlo conla aplicación (coordinaciön)
+- Incluir capturas reales de la aplicación
+- Parte de documentación más intuitiva y funcional.
+- Crear un tutorial de las partes básicas de la app
+
+
+TOQUES FINALES:
+- Descargas ponerlo conectado al github
+- Cambiar el correo y la parte de contacto
