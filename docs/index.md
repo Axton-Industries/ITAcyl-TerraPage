@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 # Terra
 
 **Gestión agrícola con visor geográfico.** Software libre GPL-3.0, desarrollado en el Instituto Tecnológico Agrario de Castilla y León (ITACyL).

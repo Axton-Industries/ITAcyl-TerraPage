@@ -35,17 +35,12 @@ theme:
     - navigation.instant
     - navigation.instant.progress
     - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.path
     - navigation.indexes
     - navigation.top
-    - navigation.footer
-    - navigation.sidebars
     - toc.follow
-    - toc.integrate
     - search.suggest
     - search.highlight
     - search.share
@@ -66,7 +61,6 @@ theme:
 
 extra:
   generator: false
-  homepage: https://axton-industries.github.io/ITAcyl-TerraPage/
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Axton-Industries/ITAcyl-TerraPage
