@@ -224,10 +224,10 @@ body {
 
 .md-nav__link {
   font-size: 0.85rem;
-  line-height: 1.5;
-  padding: 0.4rem 0.75rem;
+  line-height: 1.4;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--sl-radius-sm);
-  margin: 1px 0;
+  margin: 0;
   transition: background 0.12s ease, color 0.12s ease;
 }
 
@@ -287,24 +287,78 @@ body {
   color: var(--md-accent-fg-color);
 }
 
-/* Sidebar section labels (Material renders nav sections as <label>) */
+/* Sidebar section dropdowns — clickable, with chevron */
+.md-nav--primary > .md-nav__list > .md-nav__item--section {
+  margin-top: 0.25rem;
+}
+
 .md-nav--primary > .md-nav__list > .md-nav__item--section > label,
 .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--md-default-fg-color--light);
-  padding: 1rem 0.75rem 0.4rem;
-  margin-top: 0.5rem;
-  pointer-events: none;
-  opacity: 0.85;
+  padding: 0.45rem 0.75rem;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-radius: var(--sl-radius-sm);
+  transition: background 0.12s ease, color 0.12s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item--section > label:hover,
+.md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
 }
 
 .md-nav--primary > .md-nav__list > .md-nav__item--section:first-child > label,
 .md-nav--primary > .md-nav__list > .md-nav__item--section:first-child > .md-nav__link {
   margin-top: 0;
-  padding-top: 0.25rem;
+}
+
+/* Chevron icon — Material fills it with an SVG via JS */
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+  margin-left: auto;
+  transition: transform 0.15s ease;
+}
+
+/* When the section is open, rotate the chevron 90° (down) */
+.md-nav--primary > .md-nav__list > .md-nav__item--section input:checked ~ .md-nav__title .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-nav[aria-expanded="true"] .md-nav__title .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section[aria-expanded="true"] .md-nav__icon,
+.md-nav--primary > .md-nav__list > .md-nav__item--section input:checked + label .md-nav__icon {
+  transform: rotate(90deg);
+}
+
+/* Children list — hidden by default, shown when expanded */
+.md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 0.75rem;
+  margin-top: 0;
+  border-left: 1px solid var(--md-default-fg-color--lightest, rgba(0,0,0,0.08));
+  transition: max-height 0.2s ease, margin-top 0.2s ease;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav {
+  border-left-color: rgba(255, 255, 255, 0.08);
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item--section input:checked ~ .md-nav,
+.md-nav--primary > .md-nav__list > .md-nav__item--section .md-nav[aria-expanded="true"] {
+  max-height: 100rem;
+  margin-top: 0.15rem;
 }
 
 /* ================================================================
