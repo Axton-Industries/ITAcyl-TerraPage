@@ -3,5 +3,3 @@ HACER:
 - Incluir capturas reales de la aplicación
 
 TOQUES FINALES:
-- Descargas ponerlo conectado al github
-- Cambiar el correo y la parte de contacto
