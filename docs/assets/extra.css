@@ -208,6 +208,17 @@ body {
   padding: 1.25rem 0.75rem;
 }
 
+/* Hide the "Terra — Documentación" text label inside the left sidebar.
+   The logo is still visible; the text is redundant with the header. */
+.md-nav--primary .md-nav__title {
+  font-size: 0;
+}
+
+.md-nav--primary .md-nav__title > a,
+.md-nav--primary .md-nav__title > img {
+  font-size: initial;
+}
+
 [data-md-toggle="set"] {
   background: var(--md-accent-fg-color--transparent);
 }
