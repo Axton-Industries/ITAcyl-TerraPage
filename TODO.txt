@@ -1,5 +1,3 @@
 HACER:
-- Enlazarlo conla aplicación (coordinaciön)
-- Incluir capturas reales de la aplicación
 
 TOQUES FINALES:
