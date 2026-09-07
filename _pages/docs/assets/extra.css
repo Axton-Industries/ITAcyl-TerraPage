@@ -98,6 +98,37 @@ body {
   letter-spacing: -0.01em;
   font-size: 0.95rem;
   color: #fff;
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.md-header__ellipsis {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Stack the two topic blocks. Material animates them on scroll, but on
+   first render both render in the same row, overlapping. We size the
+   container and offset the topics so they sit one above the other. */
+.md-header__topic {
+  display: block;
+  font-size: 0.95rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+.md-header__topic[data-md-component="header-topic"] {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .md-header__button.md-logo {
@@ -278,14 +309,16 @@ body {
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--md-accent-fg-color);
-  display: flex;
-  align-items: center;
-  gap: 0.45em;
+  position: relative;
+  padding-left: 1.1rem;
 }
 
 .md-nav--primary > .md-nav__list > .md-nav__item:first-child > a.md-nav__link::before {
   content: "";
-  display: inline-block;
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  margin-top: -0.25rem;
   width: 0.5rem;
   height: 0.5rem;
   background: var(--md-accent-fg-color);
@@ -532,7 +565,7 @@ body {
 }
 
 /* ================================================================
-   Admonitions — WebODM: minimal padding, no extra spacing
+   Admonitions — WebODM: clean, no overlap
    ================================================================ */
 .md-typeset .admonition,
 .md-typeset details {
@@ -542,26 +575,32 @@ body {
   margin: 1rem 0;
   padding: 0;
   overflow: hidden;
+  display: block;
 }
 
 .md-typeset .admonition > .admonition-title,
 .md-typeset details > summary {
   border-radius: 0;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-  font-size: 0.85rem;
+  padding: 0.5rem 1rem 0.5rem 2.4rem;
+  font-weight: 700;
+  font-size: 0.82rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  margin: 0;
+  position: relative;
+  display: block;
+  text-indent: 0;
 }
 
 .md-typeset .admonition > :not(.admonition-title),
 .md-typeset details > :not(summary) {
-  padding: 0.5rem 1rem 0.25rem;
+  padding: 0.6rem 1rem 0.3rem;
   font-size: 0.875rem;
+  margin: 0;
 }
 
 .md-typeset .admonition > :not(.admonition-title):last-child,
 .md-typeset details > :not(summary):last-child {
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.85rem;
 }
 
 /* ================================================================
@@ -770,9 +809,9 @@ body {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--md-primary-fg-color);
-  display: flex;
-  align-items: center;
-  gap: 0.45em;
+  position: relative;
+  padding-left: 0.9em;
+  line-height: 1.3;
 }
 
 [data-md-color-scheme="slate"] .terra-feature-card h3 {
@@ -781,7 +820,9 @@ body {
 
 .terra-feature-card h3::before {
   content: "";
-  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0.45em;
   width: 0.35em;
   height: 0.35em;
   background: var(--md-accent-fg-color);

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://axton-industries.github.io/ITAcyl-TerraPage/docs/modulos/">
       
       
-        <link rel="prev" href="../tutorials/gestion-riego/">
+        <link rel="prev" href="../tutorials/atajos-deshacer/">
       
       
         <link rel="next" href="../roles/">
@@ -429,6 +429,16 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -511,6 +521,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/comparar-mapa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparar el mapa (split / swipe)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/crear-cultivo/" class="md-nav__link">
         
   
@@ -567,6 +605,90 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/maquinaria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestionar maquinaria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/muestras-suelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muestras de suelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/calendario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calendario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/gestion-riego/" class="md-nav__link">
         
   
@@ -575,6 +697,34 @@
     
   
     Gestión de riego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/atajos-deshacer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deshacer global y atajos
   
 
     
@@ -836,6 +986,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rutas-entre-modulos-deep-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas entre módulos (deep-linking)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistema-de-deshacer-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema de deshacer global
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1236,6 +1408,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#rutas-entre-modulos-deep-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas entre módulos (deep-linking)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistema-de-deshacer-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema de deshacer global
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1375,23 +1569,112 @@
 </div>
 <h2 id="que-hace-cada-modulo">Qué hace cada módulo<a class="headerlink" href="#que-hace-cada-modulo" title="Permanent link">&para;</a></h2>
 <h3 id="mapa">Mapa<a class="headerlink" href="#mapa" title="Permanent link">&para;</a></h3>
-<p>Visor geográfico con OpenLayers. Capas base (OSM, Esri World Imagery, PNOA MA, PNOA Histórico, Sentinel-2 cloudless, Wayback y Fototeca IGN), recintos SIGPAC por WMS, carga de GeoTIFF multiespectral, selección de banda (NIR, R, G, RE, azul, LWIR), recorte por parcelas y puntos de interés en el mapa (focos de plaga, postes, cierros rotos, zanjas, pedregales y tipos definidos por el usuario).</p>
+<p>Visor geográfico con OpenLayers y proj4. Funcionalidades:</p>
+<ul>
+<li><strong>Capas base</strong> (satelitales y mapas): OSM, Esri World Imagery, PNOA MA, PNOA Histórico, Sentinel-2 cloudless, Wayback (con detección de fechas distintas vía SHA-256) y Fototeca IGN.</li>
+<li><strong>Recintos SIGPAC</strong> por WMS (capa <code>AU.Sigpac:recinto</code>, zoom mínimo 16).</li>
+<li><strong>Selección de recinto por clic</strong>: identifica el recinto y muestra sus atributos.</li>
+<li><strong>Carga de GeoTIFF</strong> multiespectral (NIR, R, G, RE, azul, LWIR) con detección automática de bandas, dedup por firma y preview HQ.</li>
+<li><strong>Modos de comparación</strong>: <em>split</em> (dos mapas sincronizados) y <em>swipe</em> (un mapa con divisor arrastrable).</li>
+<li><strong>Medición</strong> de distancia y área sobre el mapa.</li>
+<li><strong>Importación vectorial</strong> desde el panel de capas (GeoPackage, GeoJSON, Shapefile empaquetado, KML/KMZ, CSV).</li>
+<li><strong>Puntos de interés (POIs)</strong> con tipos personalizables y <strong>cadenas</strong> entre POIs (clic-derecho para iniciar un tendido).</li>
+<li><strong>Acumulación de recintos</strong> con clic-derecho para VRA/recorte.</li>
+<li><strong>Doble clic</strong> sobre un cultivo del mapa abre su ficha en <code>/cultivos?crop=...</code>.</li>
+</ul>
 <h3 id="cultivos">Cultivos<a class="headerlink" href="#cultivos" title="Permanent link">&para;</a></h3>
-<p>Fichas de cultivo con nombre, variedad, campaña, fecha de siembra, estado, observaciones y adjuntos. Las parcelas se dibujan sobre el mapa (con emparejado automático contra SIGPAC) o se importan de un vectorial. Solo accesible para escritura por <em>Administración</em>; los demás roles ven en lectura.</p>
+<p>Fichas de cultivo con <strong>tipo + lista de variedades</strong> (sincronizadas: cambiar tipo resetea variedades), campaña, fecha de siembra, estado y adjuntos. Las parcelas se dibujan sobre el mapa (con emparejado automático contra SIGPAC) o se importan de un vectorial. <strong>Drag &amp; drop</strong> entre carpetas de campaña. <em>Administración</em> edita; los demás roles ven en lectura.</p>
 <h3 id="actuaciones">Actuaciones<a class="headerlink" href="#actuaciones" title="Permanent link">&para;</a></h3>
-<p>Registro de tareas agrícolas con adjuntos. <em>Trabajador</em> puede crear y editar; <em>Administración</em> además puede borrar.</p>
+<p>Registro de tareas agrícolas con adjuntos. Vinculadas a <strong>cultivos, trabajadores (<code>trabajadorKeys[]</code>) y maquinaria (<code>maquinariaKeys[]</code>)</strong>. Soportan <strong>tratamiento asociado</strong> (creable inline desde el modal de nueva actuación) y rango de fechas (<code>fechaInicio</code>/<code>fechaFinalizacion</code>). <em>Trabajador</em> puede crear y editar; <em>Administración</em> además puede borrar.</p>
 <h3 id="tratamientos">Tratamientos<a class="headerlink" href="#tratamientos" title="Permanent link">&para;</a></h3>
-<p>Registro de productos fitosanitarios y fertilizantes. Mismas reglas de permisos que Actuaciones.</p>
+<p>Registro de productos fitosanitarios y fertilizantes. Cálculo de <strong>dosis</strong> a partir de volumen y superficie, con <strong>conversión de unidades</strong> (L↔m³↔hl, ha↔m²). Mismas reglas de permisos que Actuaciones.</p>
 <h3 id="maquinaria">Maquinaria<a class="headerlink" href="#maquinaria" title="Permanent link">&para;</a></h3>
-<p>Inventario de maquinaria con adjuntos (fotos y documentos).</p>
+<p>Inventario con:</p>
+<ul>
+<li><strong>Ficha de máquina</strong>: categoría, tipo, marca, modelo, estado, energía (valores personalizados), potencia, año, matrícula.</li>
+<li><strong>Mantenimientos programados</strong> con periodicidad (km, horas, días) y <strong>badge de urgencia</strong> automático (vencido / pendiente / al día).</li>
+<li><strong>Averías</strong> puntuales con fecha, descripción y adjuntos.</li>
+<li><strong>Adjuntos anidados</strong> por mantenimiento y por avería (sub-claves <code>${key}-mant-${id}</code> / <code>${key}-averia-${id}</code>).</li>
+<li><strong>Marcas extra</strong> persistentes (el usuario puede añadir y eliminar valores personalizados).</li>
+</ul>
 <h3 id="muestras-de-suelo">Muestras de suelo<a class="headerlink" href="#muestras-de-suelo" title="Permanent link">&para;</a></h3>
-<p>Registro de muestras y analíticas de suelo.</p>
+<p>Generación automática de <strong>puntos de muestreo</strong> sobre las parcelas (densificación + farthest-point sampling). Cada punto tiene un <strong>ID estable</strong> entre exportaciones. Mini-mapa canvas con ESRI World Imagery. Marcado en campo (verde = tomada). <strong>Exportación client-side</strong> a:</p>
+<ul>
+<li><strong>KMZ</strong> (KML comprimido) — para apps móviles de campo.</li>
+<li><strong>KML</strong> — para Google Earth / My Maps.</li>
+<li><strong>GeoJSON</strong> — para QGIS, web.</li>
+<li><strong>SHP</strong> (ZIP con <code>.shp .shx .dbf .prj</code>) — para QGIS/ArcGIS, generado en <code>src/lib/vectorExport.ts</code> sin librerías externas.</li>
+</ul>
 <h3 id="gestion-de-riego">Gestión de riego<a class="headerlink" href="#gestion-de-riego" title="Permanent link">&para;</a></h3>
-<p>Cálculo de ETc con datos del <strong>SIAR</strong> (ET0 y lluvia efectiva) sobre las estaciones de cada provincia, con un mapa de necesidades hídricas pintado sobre las parcelas.</p>
+<p>Cálculo de <strong>ETc = ET0 · Kc</strong> con datos del <strong>SIAR</strong> (ET0 y lluvia efectiva) sobre las estaciones de cada provincia, con un mapa de <strong>necesidades hídricas</strong> pintado sobre las parcelas.</p>
+<ul>
+<li><strong>Mapeo SIGPAC↔SIAR</strong> (<code>SIGPAC_A_SIAR</code> en <code>src/lib/siarRiego.ts</code>): convierte códigos de provincia SIGPAC a códigos de provincia SIAR.</li>
+<li><strong>Interpolación IDW</strong> desde la estación más cercana al centroide del polígono de cada cultivo.</li>
+<li><strong>Kc por cultivo</strong> configurable.</li>
+<li>Resultado: <code>ResultadoCultivo { neta, etc, et0, lluviaEfectiva, dias, kc, estacion }</code>.</li>
+</ul>
 <h3 id="calendario">Calendario<a class="headerlink" href="#calendario" title="Permanent link">&para;</a></h3>
-<p>Vista de calendario con las tareas registradas.</p>
+<p>Vista mensual que <strong>agrega automáticamente</strong>:</p>
+<ul>
+<li>Actuaciones (en su rango <code>fechaInicio</code>/<code>fechaFinalizacion</code>).</li>
+<li>Mantenimientos de maquinaria (próximo vencimiento).</li>
+<li>Averías (abiertas y resueltas).</li>
+<li>Compras de maquinaria.</li>
+<li>Eventos libres (cualquier cosa).</li>
+</ul>
+<p>Eventos <strong>multi-día</strong> se renderizan como una banda horizontal. Click en un día con eventos → panel lateral con el listado. Modal <em>Nuevo registro</em> multi-tipo.</p>
 <h3 id="trabajadores">Trabajadores<a class="headerlink" href="#trabajadores" title="Permanent link">&para;</a></h3>
-<p>Listado de trabajadores. Visible y editable solo por <em>Administración</em>.</p>
+<p>Listado de personal con DNI, <strong>categoría profesional</strong> (12 valores), <strong>estado laboral</strong> (6 valores), <strong>tipo de contrato</strong> (9 valores), fecha de alta, teléfono, email. Visible y editable solo por <em>Administración</em>. Las actuaciones se vinculan a trabajadores por <code>trabajadorKeys[]</code>.</p>
+<h2 id="rutas-entre-modulos-deep-linking">Rutas entre módulos (deep-linking)<a class="headerlink" href="#rutas-entre-modulos-deep-linking" title="Permanent link">&para;</a></h2>
+<p>Terra usa el <code>search</code> de la URL para resaltar elementos al entrar desde otra página:</p>
+<table>
+<thead>
+<tr>
+<th>Query</th>
+<th>Página destino</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>?cultivo=ID</code></td>
+<td><code>/cultivos</code></td>
+<td>Resalta la ficha del cultivo</td>
+</tr>
+<tr>
+<td><code>?actuacion=ID</code></td>
+<td><code>/actuaciones</code></td>
+<td>Resalta la actuación</td>
+</tr>
+<tr>
+<td><code>?muestra=ID</code></td>
+<td><code>/muestras-suelo</code></td>
+<td>Resalta la muestra</td>
+</tr>
+<tr>
+<td><code>?crop=ID</code></td>
+<td><code>/cultivos</code></td>
+<td>Abre la ficha del cultivo (doble clic en mapa)</td>
+</tr>
+<tr>
+<td><code>?nueva=1</code></td>
+<td><code>/actuaciones</code></td>
+<td>Abre directamente el modal de nueva</td>
+</tr>
+<tr>
+<td><code>?maquinaria=ID</code></td>
+<td><code>/maquinaria</code></td>
+<td>Resalta la máquina</td>
+</tr>
+<tr>
+<td><code>?tratamiento=ID</code></td>
+<td><code>/tratamientos</code></td>
+<td>Resalta el tratamiento</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sistema-de-deshacer-global">Sistema de deshacer global<a class="headerlink" href="#sistema-de-deshacer-global" title="Permanent link">&para;</a></h2>
+<p>Casi cualquier mutación de datos pasa por <code>withUndo(store, label)</code> y queda registrada en <code>undoStore</code> (pila de hasta 30 estados con etiqueta legible). <strong>Ctrl+Z</strong> revierte la última, <strong>Ctrl+Shift+Z</strong> la rehace. El botón Deshacer de la TopBar hace lo mismo. Ver <a href="../tutorials/atajos-deshacer/">tutorial de deshacer y atajos</a>.</p>
 
 
 

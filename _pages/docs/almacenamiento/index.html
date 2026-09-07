@@ -427,6 +427,16 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -509,6 +519,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/comparar-mapa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparar el mapa (split / swipe)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/crear-cultivo/" class="md-nav__link">
         
   
@@ -565,6 +603,90 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/maquinaria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestionar maquinaria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/muestras-suelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muestras de suelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/calendario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calendario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/gestion-riego/" class="md-nav__link">
         
   
@@ -573,6 +695,34 @@
     
   
     Gestión de riego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/atajos-deshacer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deshacer global y atajos
   
 
     
@@ -972,10 +1122,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fuentes-sigpac-consumidas" class="md-nav__link">
+  <a href="#claves-localstorage-version-actual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fuentes SIGPAC consumidas
+        Claves localStorage (versión actual)
       
     </span>
   </a>
@@ -983,10 +1133,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#claves-localstorage-principales" class="md-nav__link">
+  <a href="#fuentes-sigpac-consumidas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Claves localStorage principales
+        Fuentes SIGPAC consumidas
       
     </span>
   </a>
@@ -1047,10 +1197,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fuentes-sigpac-consumidas" class="md-nav__link">
+  <a href="#claves-localstorage-version-actual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fuentes SIGPAC consumidas
+        Claves localStorage (versión actual)
       
     </span>
   </a>
@@ -1058,10 +1208,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#claves-localstorage-principales" class="md-nav__link">
+  <a href="#fuentes-sigpac-consumidas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Claves localStorage principales
+        Fuentes SIGPAC consumidas
       
     </span>
   </a>
@@ -1134,7 +1284,7 @@
 
 
 <h1 id="almacenamiento-y-sigpac">Almacenamiento y SIGPAC<a class="headerlink" href="#almacenamiento-y-sigpac" title="Permanent link">&para;</a></h1>
-<p>Terra no usa base de datos. El backend solo guarda ficheros binarios; los datos estructurados (cultivos, actuaciones, tratamientos, maquinaria, muestras, calendario, trabajadores, POIs, sesión de auth) viven en <code>localStorage</code> del navegador con Zustand (<code>persist</code>).</p>
+<p>Terra no usa base de datos. El backend solo guarda ficheros binarios; los datos estructurados (cultivos, actuaciones, tratamientos, maquinaria, muestras, POIs, calendario, trabajadores, sesión de auth) viven en <code>localStorage</code> del navegador con Zustand (<code>persist</code>).</p>
 <h2 id="rutas-internas">Rutas internas<a class="headerlink" href="#rutas-internas" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1148,7 +1298,7 @@
 <tr>
 <td>GeoTIFFs subidos</td>
 <td><code>backend/data/uploads/{image_id}.tif</code></td>
-<td>Junto al preview <code>{image_id}_preview.png</code>, sidecars <code>{image_id}.json</code> y cachés de bandas.</td>
+<td>Junto al preview <code>{image_id}_preview.png</code>, sidecars <code>{image_id}.json</code> y cachés de bandas. Migración de previews HQ al boot (<code>_PREVIEW_HQ_VERSION = 5</code>).</td>
 </tr>
 <tr>
 <td>Adjuntos</td>
@@ -1156,9 +1306,14 @@
 <td>Entidades con subdirectorio: <code>cultivos</code>, <code>actuaciones</code>, <code>maquinaria</code>, <code>pois</code>.</td>
 </tr>
 <tr>
+<td>Adjuntos anidados</td>
+<td><code>backend/data/uploads/maquinaria/&lt;key&gt;-mant-&lt;id&gt;/&lt;adjunto_id&gt;</code></td>
+<td>Para adjuntos dentro de un mantenimiento. Mismo patrón con <code>-averia-</code> para averías.</td>
+</tr>
+<tr>
 <td>Mount estático</td>
 <td><code>/uploads/...</code></td>
-<td>Servido por FastAPI vía <code>CachedStaticFiles</code>.</td>
+<td>Servido por FastAPI vía <code>CachedStaticFiles</code> con regen lazy y <code>Cache-Control: max-age=3600</code>.</td>
 </tr>
 <tr>
 <td>Frontend compilado (producción)</td>
@@ -1174,7 +1329,73 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Sin <code>/outputs/</code></p>
-<p>El README menciona un mount <code>/outputs/</code> que <strong>no existe</strong> en <code>main.py</code>. Los previews y sidecars viven junto a cada TIFF, dentro de <code>/uploads/</code>.</p>
+<p>El README y <code>vite.config.ts</code> mencionan un mount <code>/outputs/</code> que <strong>no existe</strong> en <code>main.py</code>. Los previews y sidecars viven junto a cada TIFF, dentro de <code>/uploads/</code>.</p>
+</div>
+<h2 id="claves-localstorage-version-actual">Claves <code>localStorage</code> (versión actual)<a class="headerlink" href="#claves-localstorage-version-actual" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Clave</th>
+<th>Contenido</th>
+<th>Versión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>terra:auth-session-v1</code></td>
+<td>Sesión del usuario actual (rol y nombre)</td>
+<td>v1</td>
+</tr>
+<tr>
+<td><code>terra:puntos-interes-v1</code></td>
+<td>Puntos de interés y conexiones del usuario</td>
+<td>v1</td>
+</tr>
+<tr>
+<td><code>terra:cultivos-v1</code></td>
+<td>Fichas de cultivo y geometrías de parcelas</td>
+<td><strong>v3</strong></td>
+</tr>
+<tr>
+<td><code>terra:actuaciones-v1</code></td>
+<td>Registro de actuaciones</td>
+<td><strong>v3</strong></td>
+</tr>
+<tr>
+<td><code>terra:tratamientos-v1</code></td>
+<td>Registro de tratamientos fitosanitarios y fertilizantes</td>
+<td>v1</td>
+</tr>
+<tr>
+<td><code>terra:maquinaria-v1</code></td>
+<td>Inventario de maquinaria (con mantenimientos/averías y adjuntos anidados)</td>
+<td>v1</td>
+</tr>
+<tr>
+<td><code>terra:muestras-suelo-v1</code></td>
+<td>Muestras y analíticas de suelo</td>
+<td><strong>v5</strong></td>
+</tr>
+<tr>
+<td><code>terra:gestion-riego-v1</code></td>
+<td>Preferencias y cachés del módulo de riego</td>
+<td>v1</td>
+</tr>
+<tr>
+<td><code>terra:calendario-v1</code></td>
+<td>Eventos del calendario</td>
+<td>v1</td>
+</tr>
+<tr>
+<td><code>terra:trabajadores-v1</code></td>
+<td>Listado de trabajadores y sus partes de trabajo</td>
+<td>v1</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Migraciones</p>
+<p>Si el shape de un store cambia, se incrementa su <code>version</code> y se añade la transformación en <code>migrate(persisted, version)</code>. Ver <a href="../pila-tecnica/#estado-y-persistencia-zustand--persist">pila técnica</a>.</p>
 </div>
 <h2 id="fuentes-sigpac-consumidas">Fuentes SIGPAC consumidas<a class="headerlink" href="#fuentes-sigpac-consumidas" title="Permanent link">&para;</a></h2>
 <p>Terra consume dos servicios del portal <code>sigpac-hubcloud.es</code>:</p>
@@ -1190,72 +1411,22 @@
 <tr>
 <td>WMS para el mapa</td>
 <td><code>https://sigpac-hubcloud.es/wms</code> · capa <code>AU.Sigpac:recinto</code> · min zoom 16</td>
-<td><code>src/components/map/TerraMap.tsx</code> (líneas 87-90)</td>
+<td><code>src/components/map/TerraMap.tsx</code></td>
 </tr>
 <tr>
 <td>Lookup de recinto por lon/lat</td>
 <td><code>https://sigpac-hubcloud.es/servicioconsultassigpac/query/recinfobypoint/4326/{lon}/{lat}.geojson</code></td>
-<td><code>src/lib/sigpacMatch.ts</code> (líneas 18-19)</td>
+<td><code>src/lib/sigpacMatch.ts</code></td>
 </tr>
 </tbody>
 </table>
 <p>El WMS renderiza los recintos como capa base a partir de zoom 16 (por debajo de ese zoom el panel muestra <em>"Acércate para visualizar los recintos SIGPAC"</em>).</p>
-<p>El endpoint de consulta se usa en dos lugares:</p>
+<p>El endpoint de consulta se usa en tres lugares:</p>
 <ul>
 <li>Cuando el usuario <strong>dibuja</strong> una parcela sobre el mapa, Terra llama a <code>recintoEnPunto()</code> para encontrar el recinto SIGPAC que contiene el centro del polígono y emparejarlo automáticamente.</li>
 <li>Cuando el usuario <strong>hace clic</strong> sobre un recinto existente, se identifica el recinto y se muestran sus atributos.</li>
+<li>Cuando el usuario hace <strong>clic-derecho y arrastra</strong>, los recintos seleccionados se acumulan en un panel para VRA/recorte.</li>
 </ul>
-<h2 id="claves-localstorage-principales">Claves <code>localStorage</code> principales<a class="headerlink" href="#claves-localstorage-principales" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Clave</th>
-<th>Contenido</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>terra:auth-session-v1</code></td>
-<td>Sesión del usuario actual (rol y nombre).</td>
-</tr>
-<tr>
-<td><code>terra:puntos-interes-v1</code></td>
-<td>Puntos de interés creados por el usuario.</td>
-</tr>
-<tr>
-<td><code>terra:cultivos-v1</code></td>
-<td>Fichas de cultivo y geometrías de parcelas.</td>
-</tr>
-<tr>
-<td><code>terra:actuaciones-v1</code></td>
-<td>Registro de actuaciones.</td>
-</tr>
-<tr>
-<td><code>terra:tratamientos-v1</code></td>
-<td>Registro de tratamientos fitosanitarios y fertilizantes.</td>
-</tr>
-<tr>
-<td><code>terra:maquinaria-v1</code></td>
-<td>Inventario de maquinaria.</td>
-</tr>
-<tr>
-<td><code>terra:muestras-suelo-v1</code></td>
-<td>Muestras y analíticas de suelo.</td>
-</tr>
-<tr>
-<td><code>terra:gestion-riego-v1</code></td>
-<td>Preferencias y cachés del módulo de riego.</td>
-</tr>
-<tr>
-<td><code>terra:calendario-v1</code></td>
-<td>Eventos del calendario.</td>
-</tr>
-<tr>
-<td><code>terra:trabajadores-v1</code></td>
-<td>Listado de trabajadores.</td>
-</tr>
-</tbody>
-</table>
 
 
 

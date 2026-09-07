@@ -429,6 +429,16 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -511,6 +521,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/comparar-mapa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparar el mapa (split / swipe)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/crear-cultivo/" class="md-nav__link">
         
   
@@ -567,6 +605,90 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/maquinaria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestionar maquinaria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/muestras-suelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muestras de suelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/calendario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calendario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/gestion-riego/" class="md-nav__link">
         
   
@@ -575,6 +697,34 @@
     
   
     Gestión de riego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/atajos-deshacer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deshacer global y atajos
   
 
     
@@ -912,10 +1062,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#estado-y-persistencia-zustand-persist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estado y persistencia (Zustand + persist)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scripts-npm" class="md-nav__link">
     <span class="md-ellipsis">
       
         Scripts npm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errores-y-depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores y depuración
       
     </span>
   </a>
@@ -1082,10 +1254,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#estado-y-persistencia-zustand-persist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estado y persistencia (Zustand + persist)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scripts-npm" class="md-nav__link">
     <span class="md-ellipsis">
       
         Scripts npm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errores-y-depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores y depuración
       
     </span>
   </a>
@@ -1161,28 +1355,120 @@
 <p>Software libre publicado bajo <strong>GPL-3.0</strong>. Funciona como SPA en el navegador, con backend FastAPI y, opcionalmente, instalador de escritorio con Electron.</p>
 <h2 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h2>
 <ul>
-<li>React 19 + TypeScript</li>
-<li>Vite 8 + Tailwind 4</li>
-<li>Zustand (estado + persistencia en <code>localStorage</code>)</li>
-<li>OpenLayers 10 + proj4</li>
-<li>Axios para el cliente HTTP</li>
+<li><strong>React 19.2</strong> + TypeScript</li>
+<li><strong>Vite 8</strong> (alias <code>@ → src</code>, manual chunks <code>react-vendor</code>, proxy <code>/api</code>+<code>/uploads</code> con <code>ws: true</code>)</li>
+<li><strong>Tailwind 4</strong></li>
+<li><strong>Zustand 5</strong> con <code>persist</code> (migraciones versionadas) + <code>undoStore</code> global con pila de hasta 30 snapshots</li>
+<li><strong>OpenLayers 10</strong> + <strong>proj4 2.20</strong> (CRS no-3857 vía proj4 string)</li>
+<li><strong>Axios</strong> para el cliente HTTP, con interceptor que traduce <code>detail</code> de FastAPI a <code>Error</code></li>
+<li><strong>React Router 7</strong> (rutas y deep-linking con <code>?actuacion=</code>, <code>?cultivo=</code>, <code>?crop=</code>, etc.)</li>
 </ul>
 <h2 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Python 3.12</li>
-<li>FastAPI + Uvicorn</li>
-<li>Pydantic / Pydantic Settings</li>
-<li>rasterio (ráster GeoTIFF)</li>
-<li>pyogrio (vector GeoPackage/Shapefile)</li>
-<li>shapely (geometrías)</li>
-<li>numpy + Pillow (previews)</li>
+<li><strong>Python 3.12</strong></li>
+<li><strong>FastAPI 0.115</strong> + Uvicorn 0.34</li>
+<li><strong>Pydantic 2.11</strong> + <strong>Pydantic Settings 2.9</strong> (prefijo <code>SI_</code>)</li>
+<li><strong>rasterio 1.4</strong> (ráster GeoTIFF, render con percentil 2-98, dedup por firma)</li>
+<li><strong>pyogrio 0.12</strong> (vector GeoPackage/Shapefile)</li>
+<li><strong>shapely 2.1</strong> (geometrías)</li>
+<li><strong>numpy 2.2</strong> + <strong>Pillow 11.2</strong> (previews)</li>
+<li>Cliente HTTPS con <code>urllib</code> para el SIAR (sin httpx/requests) con caché en memoria (6h listados, 15min datos)</li>
 </ul>
 <h2 id="distribucion">Distribución<a class="headerlink" href="#distribucion" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Electron (diálogo nativo de archivos y protocolo <code>raster://</code> para servir GeoTIFFs locales con range requests)</li>
-<li>electron-builder (instalador NSIS para Windows)</li>
-<li>PyInstaller (backend empaquetado en <code>Terra-backend.exe</code>)</li>
+<li><strong>Electron 42</strong> (diálogo nativo de archivos, esquema <code>raster://</code> <em>privileged</em> con Range Requests 206 Partial Content, menú nativo en español, atajos Deshacer/Rehacer/Zoom/F11)</li>
+<li><strong>electron-builder</strong> (instalador NSIS para Windows)</li>
+<li><strong>PyInstaller</strong> (backend empaquetado en <code>Terra-backend.exe</code>, onedir con <code>_internal/</code>)</li>
 </ul>
+<h2 id="estado-y-persistencia-zustand-persist">Estado y persistencia (Zustand + persist)<a class="headerlink" href="#estado-y-persistencia-zustand-persist" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Store</th>
+<th>Clave <code>localStorage</code></th>
+<th>Versión</th>
+<th>Migraciones notables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authStore</code></td>
+<td><code>terra:auth-session-v1</code></td>
+<td>v1</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>cultivosStore</code></td>
+<td><code>terra:cultivos-v1</code></td>
+<td><strong>v3</strong></td>
+<td><code>variedad</code> único → <code>variedades[]</code>; estados de cultivo</td>
+</tr>
+<tr>
+<td><code>actuacionesStore</code></td>
+<td><code>terra:actuaciones-v1</code></td>
+<td><strong>v3</strong></td>
+<td><code>maquinaria</code> texto → <code>maquinariaKeys[]</code>; <code>trabajador</code> → <code>trabajadorKeys[]</code></td>
+</tr>
+<tr>
+<td><code>tratamientosStore</code></td>
+<td><code>terra:tratamientos-v1</code></td>
+<td>v1</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>maquinariaStore</code></td>
+<td><code>terra:maquinaria-v1</code></td>
+<td>v1</td>
+<td>Marcas extra; mantenimientos/averías con adjuntos anidados</td>
+</tr>
+<tr>
+<td><code>muestrasSueloStore</code></td>
+<td><code>terra:muestrasSuelo-v1</code></td>
+<td><strong>v5</strong></td>
+<td><code>cultivoKey</code> → <code>cultivoKeys[]</code>; <code>objetivo</code> opcional</td>
+</tr>
+<tr>
+<td><code>poiStore</code></td>
+<td><code>terra:puntos-interes-v1</code></td>
+<td>v1</td>
+<td>POIs + conexiones + tipos extra</td>
+</tr>
+<tr>
+<td><code>calendarioStore</code></td>
+<td><code>terra:calendario-v1</code></td>
+<td>v1</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>trabajadoresStore</code></td>
+<td><code>terra:trabajadores-v1</code></td>
+<td>v1</td>
+<td>Trabajadores + <code>partes: ParteTrabajo[]</code></td>
+</tr>
+<tr>
+<td><code>gestionRiegoStore</code></td>
+<td><code>terra:gestionRiego-v1</code></td>
+<td>v1</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>progressStore</code></td>
+<td>(efímero)</td>
+<td>—</td>
+<td><code>start/update/finish</code> para el overlay global</td>
+</tr>
+<tr>
+<td><code>undoStore</code></td>
+<td>(efímero)</td>
+<td>—</td>
+<td>Pila global con <code>withUndo(store, labels)</code>, MAX_STACK=30</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Migraciones versionadas</p>
+<p>Cada store declara su <code>version</code> y un <code>migrate(persisted, version)</code> que se ejecuta al cargar. Al evolucionar el shape, basta con subir la versión y añadir la transformación — los usuarios con datos antiguos se actualizan sin perder información.</p>
+</div>
 <h2 id="scripts-npm">Scripts npm<a class="headerlink" href="#scripts-npm" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1194,7 +1480,7 @@
 <tbody>
 <tr>
 <td><code>dev</code></td>
-<td>Orquesta Electron + Vite + backend Python en desarrollo.</td>
+<td>Orquesta Electron + Vite + backend Python en desarrollo (con <code>uvicorn --reload --reload-dir app</code> para no reiniciar por uploads). Limpia procesos zombi.</td>
 </tr>
 <tr>
 <td><code>dev:vite</code></td>
@@ -1226,6 +1512,12 @@
 </tr>
 </tbody>
 </table>
+<h2 id="errores-y-depuracion">Errores y depuración<a class="headerlink" href="#errores-y-depuracion" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>PageErrorBoundary</strong> por página: muestra el stack en dev y un botón "Limpiar caché y volver al inicio" en producción.</li>
+<li><strong>ProcessingOverlay</strong> global: barra de progreso determinada/indeterminada (<code>progressStore.start/update/finish</code>).</li>
+<li><strong>Filtros de log</strong> en <code>backend/app/main.py</code>: <code>_COGLayoutBreakFilter</code> silencia "breaks COG layout" y "invalidated by later changes" para que la consola no se inunde.</li>
+</ul>
 
 
 

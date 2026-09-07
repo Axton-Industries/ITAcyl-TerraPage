@@ -119,9 +119,14 @@ nav:
       - Despliegue: despliegue.md
   - Tutoriales:
       - Navegar por el mapa: tutorials/navegar-mapa.md
+      - Comparar el mapa (split / swipe): tutorials/comparar-mapa.md
       - Crear un cultivo: tutorials/crear-cultivo.md
       - Registrar actuaciones: tutorials/crear-actuacion.md
+      - Gestionar maquinaria: tutorials/maquinaria.md
+      - Muestras de suelo: tutorials/muestras-suelo.md
+      - Calendario: tutorials/calendario.md
       - Gestión de riego: tutorials/gestion-riego.md
+      - Deshacer global y atajos: tutorials/atajos-deshacer.md
   - Guía de usuario:
       - Módulos: modulos.md
       - Roles y permisos: roles.md
