@@ -320,15 +320,21 @@
 
           <div class="grid shots">
             <figure class="shot">
-              <img src="assets/screenshot-mapa.png" alt="Visor SIGPAC con recintos y parcela dibujada" loading="lazy" />
+              <button class="shot-zoom" type="button" aria-label="Ampliar captura">
+                <img src="assets/screenshot-mapa.png" alt="Visor SIGPAC con recintos y parcela dibujada" loading="lazy" />
+              </button>
               <figcaption>Recintos SIGPAC sobre mapa base, con parcela dibujada emparejada</figcaption>
             </figure>
             <figure class="shot">
-              <img src="assets/screenshot-mapa-dividido.png" alt="Comparación split de GeoTIFF multiespectral" loading="lazy" />
+              <button class="shot-zoom" type="button" aria-label="Ampliar captura">
+                <img src="assets/screenshot-mapa-dividido.png" alt="Comparación split de GeoTIFF multiespectral" loading="lazy" />
+              </button>
               <figcaption>Visor en modo comparación: GeoTIFF multiespectral sobre ortofoto</figcaption>
             </figure>
             <figure class="shot">
-              <img src="assets/screenshot-riego.png" alt="Mapa de necesidades hídricas con datos SIAR" loading="lazy" />
+              <button class="shot-zoom" type="button" aria-label="Ampliar captura">
+                <img src="assets/screenshot-riego.png" alt="Mapa de necesidades hídricas con datos SIAR" loading="lazy" />
+              </button>
               <figcaption>Mapa de necesidades hídricas con datos SIAR</figcaption>
             </figure>
           </div>
@@ -348,11 +354,15 @@
 
           <div class="grid shots">
             <figure class="shot shot--small">
-              <img src="assets/screenshot-login.png" alt="Pantalla de acceso con cuentas demo" loading="lazy" />
+              <button class="shot-zoom" type="button" aria-label="Ampliar captura">
+                <img src="assets/screenshot-login.png" alt="Pantalla de acceso con cuentas demo" loading="lazy" />
+              </button>
               <figcaption>Acceso con cuentas demo (Administración, Trabajador, Visitante)</figcaption>
             </figure>
             <figure class="shot shot--small">
-              <img src="assets/calendario.png" alt="Vista mensual del calendario con eventos" loading="lazy" />
+              <button class="shot-zoom" type="button" aria-label="Ampliar captura">
+                <img src="assets/calendario.png" alt="Vista mensual del calendario con eventos" loading="lazy" />
+              </button>
               <figcaption>Calendario mensual con eventos agregados de todos los módulos</figcaption>
             </figure>
           </div>
@@ -406,6 +416,10 @@
         <p>&copy; <span id="year">2026</span> ITACyL. Publicado bajo GPL-3.0.</p>
       </div>
     </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Vista ampliada">
+      <img src="" alt="" id="lightbox-img" />
+    </dialog>
 
     <script src="main.js" defer></script>
   </body>

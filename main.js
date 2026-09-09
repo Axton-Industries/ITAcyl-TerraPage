@@ -20,6 +20,24 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  if (lightbox && lightboxImg) {
+    document.querySelectorAll(".shot-zoom").forEach(function (btn) {
+      var img = btn.querySelector("img");
+      btn.addEventListener("click", function () {
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+        }
+        lightbox.showModal();
+      });
+    });
+    lightbox.addEventListener("click", function () {
+      lightbox.close();
+    });
+  }
+
   if ("IntersectionObserver" in window) {
     var reveal = document.querySelectorAll(".feature, .step, .shot, .stack-col");
     reveal.forEach(function (el) {
