@@ -1,3 +1,6 @@
 HACER:
 
+
 TOQUES FINALES:
+- Cambiar todo al nuevo nombre
+- Meter imagenes con el nuevo nombre
