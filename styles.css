@@ -670,6 +670,11 @@ code {
   gap: 2.5rem;
 }
 
+.footer-brand > img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
 .footer-brand p {
   color: #9fb3a8;
   font-size: 0.92rem;
@@ -679,12 +684,17 @@ code {
 .footer-itacyl {
   display: inline-block;
   margin-top: 0.6rem;
-  opacity: 0.85;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.footer-itacyl:hover {
+  opacity: 1;
 }
 
 .footer-itacyl img {
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
+  height: 41px;
+  width: auto;
 }
 
 .footer-cols {
