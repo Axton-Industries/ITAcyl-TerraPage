@@ -36,6 +36,29 @@ jobs:
         # GitHub Pages serves it at /docs/ without any extra wrapper dir.
         run: mkdocs build -f docs-src/mkdocs.yml --strict
 
+      - name: Inject latest Terra download URL
+        env:
+          GH_TOKEN: ${{ secrets.TERRA_TOKEN }}
+        run: |
+          EXE_URL=$(curl -sL \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/Axton-Industries/ITAcyl-Terra/releases/latest" \
+          | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)
+          for a in data.get('assets', []):
+              if a['name'].endswith('.exe'):
+                  print(a['browser_download_url']); break
+          ")
+          if [ -n "$EXE_URL" ]; then
+            echo "Latest .exe URL: $EXE_URL"
+            sed -i "s|__TERRA_EXE_URL__|${EXE_URL}|g" index.html
+          else
+            echo "::warning::Could not fetch .exe URL — falling back to releases page"
+            sed -i "s|__TERRA_EXE_URL__|https://github.com/Axton-Industries/ITAcyl-Terra/releases/latest|g" index.html
+          fi
+
       - name: Commit built site
         run: |
           git config user.name "github-actions[bot]"
