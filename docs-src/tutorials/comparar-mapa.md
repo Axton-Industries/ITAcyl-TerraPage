@@ -1,11 +1,11 @@
 # Comparar el mapa (split / swipe)
 
-Terra incluye dos modos de comparación sobre el visor geográfico: **split** (dos mapas lado a lado, sincronizados) y **swipe** (un único mapa con un divisor arrastrable). Útil para comparar vuelos de distintas fechas, una imagen multiespectral contra la ortofoto, o el antes/después de una actuación.
+Terra incluye tres modos de comparación sobre el visor geográfico: **split** (dos mapas lado a lado, sincronizados), **swipe** (divisor arrastrable) y **transparencia** (superposición con opacidad regulable).
 
 ## Activar el modo comparación
 
 !!! tip "Dónde está"
-    El selector de modo vive en la esquina superior del mapa, sobre el panel de control. Hay tres opciones: **Mapa** (clásico), **Comparar** (split) y **Swipe**.
+    El selector de modo vive en la esquina superior del mapa, sobre el panel de control. Hay cuatro opciones: **Mapa** (clásico), **Comparar** (split), **Swipe** y **Transparencia**.
 
 1. Abre el módulo **Mapa**.
 2. En la barra superior del visor, selecciona **Comparar** o **Swipe**.
@@ -31,6 +31,17 @@ Un único mapa con una línea vertical (clipPath) que arrastras con el ratón. L
 !!! info "Cuándo usarlo"
     Cuando quieres enseguida "qué ha cambiado" en una zona concreta: el swipe entre PNOA y un NDVI del cultivo, o entre dos fechas de Sentinel-2 cloudless, hace evidentes los cambios de un vistazo.
 
+## Modo Transparencia
+
+Superpone dos mapas base (por ejemplo, ortofoto PNOA y Sentinel-2 cloudless) con un control de opacidad. El deslizador va revelando la capa de arriba sobre la de abajo según el porcentaje elegido. Cada mapa base puede tener su propia fecha real (`Fecha imagen`) y fuente (`Fuente de imagen`).
+
+- **Fecha de imagen**: indica la captura real del satélite o del vuelo; se muestra en la píldora junto al control.
+- **Fuente de imagen**: cambia entre Esri, OSM, PNOA MA, Fototeca IGN, PNOA Histórico, Sentinel-2 y Wayback.
+- **Sin fechas disponibles**: al abrir la transparencia sin fechas elegidas, la capa base puede salir en blanco hasta que se seleccione una fecha válida (`createSatelliteLayer`).
+
+!!! info "Cuándo usarlo"
+    Ideal para comparar una capa con transparencia regulable sobre otra: ver el vigor de un NDVI sobre la ortofoto sin perder contexto, o comparar dos fechas de Sentinel-2 con una transición suave.
+
 ## Casos de uso típicos
 
 | Caso | Modo recomendado |
@@ -39,6 +50,7 @@ Un único mapa con una línea vertical (clipPath) que arrastras con el ratón. L
 | Antes/después de una actuación sobre ortofoto | Swipe |
 | Comprobar si una zona ha cambiado entre dos fechas de PNOA | Swipe o Split |
 | Validar el recorte por recintos SIGPAC sobre la imagen | Swipe |
+| Comparar con transparencia regulable (opacidad) entre dos fechas | Transparencia |
 
 ## Siguiente paso
 
