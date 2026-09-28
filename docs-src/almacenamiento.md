@@ -30,6 +30,10 @@ Terra no usa base de datos. El backend solo guarda ficheros binarios; los datos 
 | `terra:gestion-riego-v1` | Preferencias y cachés del módulo de riego | v1 |
 | `terra:calendario-v1` | Eventos del calendario | v1 |
 | `terra:trabajadores-v1` | Listado de trabajadores y sus partes de trabajo | v1 |
+| `terra:map-campanas-v1` | Selección de campañas para filtro del mapa | v1 |
+| `terra:user-layers-v1` | Capas vectoriales y rásteres importadas por el usuario | v1 |
+| `terra:map-views-v1` | Posición guardada del mapa (home/center) | v1 |
+| `terra:clasificacion-v1` | Datos de clasificación de cultivos | v1 |
 
 !!! info "Migraciones"
     Si el shape de un store cambia, se incrementa su `version` y se añade la transformación en `migrate(persisted, version)`. Ver [pila técnica](pila-tecnica.md#estado-y-persistencia-zustand--persist).

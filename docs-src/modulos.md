@@ -33,6 +33,9 @@ Visor geográfico con OpenLayers y proj4. Funcionalidades:
 - **Puntos de interés (POIs)** con tipos personalizables y **cadenas** entre POIs (clic-derecho para iniciar un tendido).
 - **Acumulación de recintos** con clic-derecho para VRA/recorte.
 - **Doble clic** sobre un cultivo del mapa abre su ficha en `/cultivos?crop=...`.
+- **Filtro por campañas** (`mapCampanasStore`): seleccionar campañas en el panel filtra los cultivos visibles (incluidos finalizados al marcar su campaña).
+- **Capas importadas** (`mapLayersStore`): capas vectoriales (GeoJSON, Shapefile, KML, CSV) y rásteres (GeoTIFF) persistentes (`terra:user-layers-v1`) con control de visibilidad y banda espectral (`band`).
+- **Vista guardada** (`mapViewsStore`): la posición del mapa (`terra:map-views-v1`) se restaura al volver al módulo (`MAP_DEFAULT_CENTER`, zoom 15).
 
 ### Cultivos
 

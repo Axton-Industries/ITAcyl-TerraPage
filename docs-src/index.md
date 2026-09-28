@@ -14,7 +14,7 @@
 <div class="terra-feature-grid">
   <div class="terra-feature-card">
     <h3> Mapa interactivo </h3>
-    <p>Visor geográfico con capas SIGPAC, GeoTIFF multiespectral, dibujo de parcelas, medición y modos de comparación (split / swipe).</p>
+    <p>Visor geográfico con capas SIGPAC, GeoTIFF multiespectral, dibujo de parcelas, medición, modos de comparación (split / swipe), filtro por campañas y capas importadas persistentes.</p>
   </div>
   <div class="terra-feature-card">
     <h3> Cultivos </h3>
@@ -103,6 +103,11 @@ Guías paso a paso para sacar el máximo partido a cada módulo.
   <a class="terra-feature-card" href="tutorials/gestion-riego.md">
     <h3> Gestión de riego </h3>
     <p>Calcula las necesidades hídricas con datos agroclimáticos del SIAR.</p>
+    <p><span>Empezar &rarr;</span></p>
+  </a>
+  <a class="terra-feature-card" href="tutorials/trabajadores.md">
+    <h3> Gestionar trabajadores </h3>
+    <p>Registro de personal con categorías, contratos y estados laborales.</p>
     <p><span>Empezar &rarr;</span></p>
   </a>
   <a class="terra-feature-card" href="tutorials/atajos-deshacer.md">
