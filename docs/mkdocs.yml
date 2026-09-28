@@ -126,6 +126,7 @@ nav:
       - Muestras de suelo: tutorials/muestras-suelo.md
       - Calendario: tutorials/calendario.md
       - Gestión de riego: tutorials/gestion-riego.md
+      - Trabajadores: tutorials/trabajadores.md
       - Deshacer global y atajos: tutorials/atajos-deshacer.md
   - Guía de usuario:
       - Módulos: modulos.md
@@ -136,3 +137,4 @@ nav:
       - API REST: api.md
       - Variables de entorno: env.md
       - Almacenamiento y SIGPAC: almacenamiento.md
+      - Landing: landing.md
