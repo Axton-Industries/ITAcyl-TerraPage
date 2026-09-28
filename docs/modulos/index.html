@@ -1132,6 +1132,8 @@
       
         
       
+        
+      
     
     
     
@@ -1306,6 +1308,34 @@
     
   
     Landing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../informe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informe
   
 
     
@@ -1641,6 +1671,9 @@
 <li><strong>Puntos de interés (POIs)</strong> con tipos personalizables y <strong>cadenas</strong> entre POIs (clic-derecho para iniciar un tendido).</li>
 <li><strong>Acumulación de recintos</strong> con clic-derecho para VRA/recorte.</li>
 <li><strong>Doble clic</strong> sobre un cultivo del mapa abre su ficha en <code>/cultivos?crop=...</code>.</li>
+<li><strong>Filtro por campañas</strong> (<code>mapCampanasStore</code>): seleccionar campañas en el panel filtra los cultivos visibles (incluidos finalizados al marcar su campaña).</li>
+<li><strong>Capas importadas</strong> (<code>mapLayersStore</code>): capas vectoriales (GeoJSON, Shapefile, KML, CSV) y rásteres (GeoTIFF) persistentes (<code>terra:user-layers-v1</code>) con control de visibilidad y banda espectral (<code>band</code>).</li>
+<li><strong>Vista guardada</strong> (<code>mapViewsStore</code>): la posición del mapa (<code>terra:map-views-v1</code>) se restaura al volver al módulo (<code>MAP_DEFAULT_CENTER</code>, zoom 15).</li>
 </ul>
 <h3 id="cultivos">Cultivos<a class="headerlink" href="#cultivos" title="Permanent link">&para;</a></h3>
 <p>Fichas de cultivo con <strong>tipo + lista de variedades</strong> (sincronizadas: cambiar tipo resetea variedades), campaña, fecha de siembra, estado y adjuntos. Las parcelas se dibujan sobre el mapa (con emparejado automático contra SIGPAC) o se importan de un vectorial. <strong>Drag &amp; drop</strong> entre carpetas de campaña. <em>Administración</em> edita; los demás roles ven en lectura.</p>
