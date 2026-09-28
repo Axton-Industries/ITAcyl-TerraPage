@@ -616,6 +616,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#modo-transparencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo Transparencia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#casos-de-uso-tipicos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1051,6 +1062,8 @@
       
         
       
+        
+      
     
     
     
@@ -1266,6 +1279,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copia de seguridad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1326,6 +1367,17 @@
     <span class="md-ellipsis">
       
         Modo Swipe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modo-transparencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo Transparencia
       
     </span>
   </a>
@@ -1420,11 +1472,11 @@
 
 
 <h1 id="comparar-el-mapa-split-swipe">Comparar el mapa (split / swipe)<a class="headerlink" href="#comparar-el-mapa-split-swipe" title="Permanent link">&para;</a></h1>
-<p>Terra incluye dos modos de comparación sobre el visor geográfico: <strong>split</strong> (dos mapas lado a lado, sincronizados) y <strong>swipe</strong> (un único mapa con un divisor arrastrable). Útil para comparar vuelos de distintas fechas, una imagen multiespectral contra la ortofoto, o el antes/después de una actuación.</p>
+<p>Terra incluye tres modos de comparación sobre el visor geográfico: <strong>split</strong> (dos mapas lado a lado, sincronizados), <strong>swipe</strong> (divisor arrastrable) y <strong>transparencia</strong> (superposición con opacidad regulable).</p>
 <h2 id="activar-el-modo-comparacion">Activar el modo comparación<a class="headerlink" href="#activar-el-modo-comparacion" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Dónde está</p>
-<p>El selector de modo vive en la esquina superior del mapa, sobre el panel de control. Hay tres opciones: <strong>Mapa</strong> (clásico), <strong>Comparar</strong> (split) y <strong>Swipe</strong>.</p>
+<p>El selector de modo vive en la esquina superior del mapa, sobre el panel de control. Hay cuatro opciones: <strong>Mapa</strong> (clásico), <strong>Comparar</strong> (split), <strong>Swipe</strong> y <strong>Transparencia</strong>.</p>
 </div>
 <ol>
 <li>Abre el módulo <strong>Mapa</strong>.</li>
@@ -1451,6 +1503,17 @@
 <p class="admonition-title">Cuándo usarlo</p>
 <p>Cuando quieres enseguida "qué ha cambiado" en una zona concreta: el swipe entre PNOA y un NDVI del cultivo, o entre dos fechas de Sentinel-2 cloudless, hace evidentes los cambios de un vistazo.</p>
 </div>
+<h2 id="modo-transparencia">Modo Transparencia<a class="headerlink" href="#modo-transparencia" title="Permanent link">&para;</a></h2>
+<p>Superpone dos mapas base (por ejemplo, ortofoto PNOA y Sentinel-2 cloudless) con un control de opacidad. El deslizador va revelando la capa de arriba sobre la de abajo según el porcentaje elegido. Cada mapa base puede tener su propia fecha real (<code>Fecha imagen</code>) y fuente (<code>Fuente de imagen</code>).</p>
+<ul>
+<li><strong>Fecha de imagen</strong>: indica la captura real del satélite o del vuelo; se muestra en la píldora junto al control.</li>
+<li><strong>Fuente de imagen</strong>: cambia entre Esri, OSM, PNOA MA, Fototeca IGN, PNOA Histórico, Sentinel-2 y Wayback.</li>
+<li><strong>Sin fechas disponibles</strong>: al abrir la transparencia sin fechas elegidas, la capa base puede salir en blanco hasta que se seleccione una fecha válida (<code>createSatelliteLayer</code>).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Cuándo usarlo</p>
+<p>Ideal para comparar una capa con transparencia regulable sobre otra: ver el vigor de un NDVI sobre la ortofoto sin perder contexto, o comparar dos fechas de Sentinel-2 con una transición suave.</p>
+</div>
 <h2 id="casos-de-uso-tipicos">Casos de uso típicos<a class="headerlink" href="#casos-de-uso-tipicos" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1475,6 +1538,10 @@
 <tr>
 <td>Validar el recorte por recintos SIGPAC sobre la imagen</td>
 <td>Swipe</td>
+</tr>
+<tr>
+<td>Comparar con transparencia regulable (opacidad) entre dos fechas</td>
+<td>Transparencia</td>
 </tr>
 </tbody>
 </table>
